@@ -9,7 +9,7 @@ const exco = {
       name: 'name',
       title: 'Name',
       type: 'string',
-      
+
       validation: (Rule: StringRule) => [
         Rule.required().error('Name of EXCO required'),
       ],
@@ -18,7 +18,28 @@ const exco = {
       name: 'position',
       title: 'Position',
       type: 'string',
-      description: 'Title of EXCO, eg. President, HFS, ...',
+      options: {
+        list: [
+          'President',
+          'Vice President (internal)',
+          'Vice President (external)',
+          'Honorary General Secretary',
+          'General Executive',
+          'Honorary Finance Secretary',
+          'Finance Executive',
+          'Marketing Director',
+          'Marketing Executive',
+          'Professional Development Director',
+          'Professional Development Executive',
+          'Tech Director',
+          'Tech Executive',
+          'Training Director',
+          'Training Executive',
+          'Public Relations Director',
+          'Public Relations Executive',
+          'Other',
+        ],
+      },
       validation: (Rule: StringRule) => [
         Rule.required().error('Title of EXCO is required'),
       ],
@@ -40,6 +61,14 @@ const exco = {
           'AY26/27',
         ],
       },
+      initialValue: () => {
+        const currentYear = new Date().getFullYear(); // Assume elections in September
+        if (new Date().getMonth() < 8) {
+          return `AY${(currentYear - 1) % 100}/${currentYear % 100}`;
+        } else {
+          return `AY${currentYear % 100}/${(currentYear + 1) % 100}`;
+        }
+      },
       validation: (Rule: StringRule) => [
         Rule.required().error('Term of EXCO is required'),
       ],
@@ -48,7 +77,7 @@ const exco = {
       name: 'profile_pic',
       title: 'Profile picture',
       type: 'image',
-      
+
       options: { hotspot: true },
       storeOriginalFilename: false,
       validation: (Rule: ImageRule) => [

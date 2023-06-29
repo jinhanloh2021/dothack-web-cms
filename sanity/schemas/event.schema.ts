@@ -51,6 +51,7 @@ const event = {
       name: 'date',
       title: 'Date posted',
       type: 'date',
+      description: 'Not to be confused with Event Date',
       initialValue: new Date().toISOString().split('T')[0],
       options: {
         dateFormat: 'DD-MM-YYYY',
@@ -95,6 +96,23 @@ const event = {
             withFilename: true,
           },
         },
+      ],
+    },
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'date',
+      media: 'image',
+    },
+  },
+  orderings: [
+    {
+      title: 'Latest written',
+      name: 'datePostedLatest',
+      by: [
+        { field: 'date', direction: 'desc' },
+        { field: 'name', direction: 'asc' },
       ],
     },
   ],
