@@ -9,7 +9,7 @@ const exco = {
       name: 'name',
       title: 'Name',
       type: 'string',
-      description: 'Name of EXCO member',
+      
       validation: (Rule: StringRule) => [
         Rule.required().error('Name of EXCO required'),
       ],
@@ -48,7 +48,7 @@ const exco = {
       name: 'profile_pic',
       title: 'Profile picture',
       type: 'image',
-      description: 'Profile picture of EXCO, use something casual',
+      
       options: { hotspot: true },
       storeOriginalFilename: false,
       validation: (Rule: ImageRule) => [
