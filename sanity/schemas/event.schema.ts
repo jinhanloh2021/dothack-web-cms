@@ -1,4 +1,4 @@
-import { ImageRule, SlugRule, StringRule } from 'sanity';
+import { ImageRule, SlugRule, StringRule, TextRule } from 'sanity';
 const event = {
   name: 'event',
   title: 'Event',
@@ -36,6 +36,7 @@ const event = {
           type: 'text',
           name: 'alt',
           title: 'alternative text',
+          rows: 1,
           description:
             "Some of your visitors cannot see images, be they blind, color-blind, low-sighted; alternative text is of great help for those people that can rely on it to have a good idea of what's on your page.",
         },
@@ -57,6 +58,20 @@ const event = {
         dateFormat: 'DD-MM-YYYY',
         calendarTodayLabel: 'Today',
       },
+    },
+    {
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'text',
+      rows: 2,
+      description:
+        'A 100 character summary of this event to be used as preview',
+      validation: (Rule: TextRule) => [
+        Rule.required().error('Event requires a short excerpt'),
+        Rule.min(100).warning(
+          'Using at least 100 characters will make the preview look better'
+        ),
+      ],
     },
     {
       name: 'content',
