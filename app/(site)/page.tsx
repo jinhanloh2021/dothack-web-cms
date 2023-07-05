@@ -3,7 +3,7 @@ import { ExcoQuery } from '@/types/Exco';
 
 export default async function Home() {
   const allExco: ExcoQuery[] = await getExco();
-  console.log(JSON.stringify(allExco));
+  // console.log(JSON.stringify(allExco));
   return (
     <div>
       <div>Home</div>

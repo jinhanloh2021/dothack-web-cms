@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import '../globals.css';
+import '@/styles/globals.css';
+import { buttonVariants } from '@/components/ui/button';
 export const metadata = {
-  title: 'DotHack',
-  description: 'Welcome to SMU .Hack!',
+  title: '.Hack',
+  description: 'SMU .Hack student development club',
 };
 
 export default function RootLayout({
@@ -14,10 +15,13 @@ export default function RootLayout({
     <html lang='en'>
       <body>
         <header className='flex gap-4 p-2 border-solid border-2'>
-          <Link href={'/'} className='text-blue-400 underline'>
+          <Link href={'/'} className={buttonVariants({ variant: 'outline' })}>
             Home
           </Link>
-          <Link href={'/events'} className='text-blue-400 underline'>
+          <Link
+            href={'/events'}
+            className={buttonVariants({ variant: 'outline' })}
+          >
             Events
           </Link>
         </header>

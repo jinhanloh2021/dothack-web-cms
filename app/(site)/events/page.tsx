@@ -6,7 +6,7 @@ type Props = {};
 
 export default async function Events({}: Props) {
   const allEvents = await getEvents();
-  console.log(allEvents);
+  // console.log(allEvents);
   return (
     <>
       {allEvents.map((e: any, i: number) => (

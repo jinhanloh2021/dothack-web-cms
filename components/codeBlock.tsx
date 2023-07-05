@@ -1,5 +1,5 @@
 import Prism, { Token } from 'prismjs';
-import '../prism-one-dark.css';
+import '@/styles/prism-one-dark.css';
 
 type Props = {
   language:
