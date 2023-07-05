@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import '@/styles/globals.css';
-import { buttonVariants } from '@/components/ui/button';
+import { ThemeProvider } from '@/components/theme-provider';
+import Navbar from '@/components/navbar';
 export const metadata = {
   title: '.Hack',
   description: 'SMU .Hack student development club',
@@ -12,20 +12,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body>
-        <header className='flex gap-4 p-2 border-solid border-2'>
-          <Link href={'/'} className={buttonVariants({ variant: 'outline' })}>
-            Home
-          </Link>
-          <Link
-            href={'/events'}
-            className={buttonVariants({ variant: 'outline' })}
-          >
-            Events
-          </Link>
-        </header>
-        {children}
+    <html lang='en' suppressHydrationWarning>
+      <body className='px-6'>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          <Navbar />
+          <>{children}</>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -10,7 +10,7 @@ export default async function Event({ params }: Props) {
   return (
     <>
       <h1 className='text-lg font-semibold'>{event.name}</h1>
-      {JSON.stringify(event, null, 2)}
+      <p className='break-word'>{JSON.stringify(event, null, 2)}</p>
     </>
   );
 }
