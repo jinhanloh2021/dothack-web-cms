@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
-import Navbar from '@/components/navbar';
+import Navbar from '@/components/navbar/navbar';
 export const metadata = {
   title: '.Hack',
   description: 'SMU .Hack student development club',
