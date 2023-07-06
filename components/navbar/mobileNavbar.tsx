@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import debounce from 'lodash/debounce';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, Variants, motion } from 'framer-motion';
 import { Button } from '../ui/button';
 import {
   CalendarIcon,
@@ -17,6 +17,27 @@ import {
 } from '../ui/sheet';
 import { Separator } from '../ui/separator';
 import Link from 'next/link';
+
+const dropIn: Variants = {
+  hidden: {
+    y: '-52px',
+  },
+  visible: {
+    y: '0',
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      type: 'spring',
+    },
+  },
+  exit: {
+    y: '-52px',
+    transition: {
+      duration: 0.5,
+      type: 'spring',
+    },
+  },
+};
 
 const MobileNavbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -42,14 +63,15 @@ const MobileNavbar = () => {
   }, [handleScroll]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       {(visible || prevScrollPos <= 52) && (
         <motion.nav
-          className='py-2 fixed top-0'
+          className='py-4 fixed top-0'
           key={'nav'}
-          initial={{ opacity: 1, y: -60 }} // hard code height of nav bar
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 1, y: -60 }}
+          initial='hidden'
+          animate='visible'
+          exit='exit'
+          variants={dropIn}
         >
           <Sheet>
             <SheetTrigger>

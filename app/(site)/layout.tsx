@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className='pt-[3.25rem] md:pt-[4.25rem] px-6 sm:px-16 md:px-24 lg:px-48 xl:px-80'>
+      <body className='pt-[4.25rem] px-6 sm:px-16 md:px-24 lg:px-48 xl:px-80'>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <Navbar />
           {children}
