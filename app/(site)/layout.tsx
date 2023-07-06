@@ -13,10 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className='px-6'>
+      <body className='pt-[3.25rem] md:pt-[4.25rem] px-6 sm:px-16 md:px-24 lg:px-48 xl:px-80'>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <Navbar />
-          <>{children}</>
+          {children}
         </ThemeProvider>
       </body>
     </html>

@@ -1,9 +1,10 @@
 'use client';
 import Link from 'next/link';
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Button, buttonVariants } from './ui/button';
 import { ModeToggle } from './modeToggle';
 import useIsMobile from '@/lib/useIsMobile';
+import debounce from 'lodash/debounce';
 import {
   Sheet,
   SheetHeader,
@@ -28,7 +29,7 @@ export default function Navbar({}: Props) {
 
 const DesktopNavbar = () => {
   return (
-    <header className='flex gap-4 py-4'>
+    <nav className='flex gap-4 py-4 fixed top-0 h-fit'>
       <Link href={'/'} className={buttonVariants({ variant: 'outline' })}>
         Home
       </Link>
@@ -36,13 +37,34 @@ const DesktopNavbar = () => {
         Events
       </Link>
       <ModeToggle />
-    </header>
+    </nav>
   );
 };
 
 const MobileNavbar = () => {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const handleScroll = useCallback(
+    debounce(() => {
+      const currentScrollPos = window.scrollY;
+      if (currentScrollPos > prevScrollPos) {
+        setVisible(false); // scrolled down
+      } else {
+        setVisible(true);
+      }
+      setPrevScrollPos(currentScrollPos);
+    }, 100),
+    [prevScrollPos]
+  );
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
   return (
-    <header className='py-2'>
+    <nav className={`py-2 fixed top-0 ${visible ? '' : 'hidden'}`}>
       <Sheet>
         <SheetTrigger>
           <Button variant={'outline'} size={'icon'}>
@@ -77,6 +99,6 @@ const MobileNavbar = () => {
           </div>
         </SheetContent>
       </Sheet>
-    </header>
+    </nav>
   );
 };
