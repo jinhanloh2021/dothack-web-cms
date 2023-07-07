@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import debounce from 'lodash/debounce';
 import { AnimatePresence, Variants, motion } from 'framer-motion';
-import { Button } from '../ui/button';
 import {
   CalendarIcon,
   HamburgerMenuIcon,
@@ -43,19 +41,15 @@ const MobileNavbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleScroll = useCallback(
-    debounce(() => {
-      const currentScrollPos = window.scrollY;
-      if (currentScrollPos > prevScrollPos) {
-        setVisible(false); // scrolled down
-      } else {
-        setVisible(true);
-      }
-      setPrevScrollPos(currentScrollPos);
-    }, 100),
-    [prevScrollPos]
-  );
+  const handleScroll = useCallback(() => {
+    const currentScrollPos = window.scrollY;
+    if (currentScrollPos > prevScrollPos) {
+      setVisible(false); // scrolled down
+    } else {
+      setVisible(true);
+    }
+    setPrevScrollPos(currentScrollPos);
+  }, [prevScrollPos]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -63,7 +57,7 @@ const MobileNavbar = () => {
   }, [handleScroll]);
 
   return (
-    <AnimatePresence initial={false}>
+    <AnimatePresence>
       {(visible || prevScrollPos <= 52) && (
         <motion.nav
           className='py-4 fixed top-0'
@@ -75,9 +69,9 @@ const MobileNavbar = () => {
         >
           <Sheet>
             <SheetTrigger>
-              <Button variant={'outline'} size={'icon'}>
+              <div className='h-9 w-9 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-400 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-slate-800 border border-slate-200 bg-white shadow-sm hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50'>
                 <HamburgerMenuIcon className='h-6 w-6' />
-              </Button>
+              </div>
             </SheetTrigger>
             <SheetContent side={'left'}>
               <SheetHeader>
