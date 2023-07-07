@@ -4,6 +4,9 @@ import Navbar from '@/components/navbar/index';
 export const metadata = {
   title: '.Hack',
   description: 'SMU .Hack student development club',
+  icons: {
+    icon: '/assets/images/favicon.png',
+  },
 };
 
 export default function RootLayout({
