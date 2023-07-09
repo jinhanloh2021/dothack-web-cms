@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
-    <svg width="200" height="200" viewBox="0 0 200 200" fill="none"
+    <symbol width="200" height="200" viewBox="0 0 200 200" fill="none"
       xmlns="http://www.w3.org/2000/svg" id="floatArt">
       <g clip-path="url(#clip0_701_182)">
         <circle cx="100" cy="100" r="100" fill="#AFF7CB" />
@@ -22,7 +22,7 @@
           <rect width="200" height="200" fill="white" />
         </clipPath>
       </defs>
-    </svg>
+    </symbol>
 
     <symbol width="16" height="16" viewBox="0 0 16 16" fill="none"
       xmlns="http://www.w3.org/2000/svg" id="logoNoShadow">
