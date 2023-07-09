@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className='pt-[4.25rem] px-6 sm:px-16 md:px-24 lg:px-48 xl:px-80'>
+      <body className='pt-[4.25rem] px-6 sm:px-16 md:px-24 lg:px-48 xl:px-80 dark:bg-offBlack bg-offWhite dark:text-offWhite text-offBlack font-montserrat tracking-wide'>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <Navbar />
           {children}

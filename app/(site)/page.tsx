@@ -1,4 +1,4 @@
-import SpriteIcon from '@/components/SpriteIcon';
+import HeroArtDrag from '@/components/heroArtDrag';
 import { getExco } from '@/sanity/sanity.queries';
 import { ExcoQuery } from '@/types/Exco';
 
@@ -7,11 +7,19 @@ export default async function Home() {
   // console.log(JSON.stringify(allExco));
   return (
     <main>
-      <h1 className='text-offWhite'>Home</h1>
-      <SpriteIcon
-        id='floatArt'
-        className={'h-[12.5rem] w-[12.5rem] m-auto scale-100 bg-offBlack'}
-      />
+      <section id='home' className='h-[90vh] text-center'>
+        <h1 className='font-bold text-7xl tracking-widest pt-[60%]'>
+          <span className='text-[#81FFB2] font-sans'>.</span>HACK
+        </h1>
+        <h3 className='font-medium text-lg'>
+          Solving the problems of tomorrow
+        </h3>
+        <p className='font-medium text-xs leading-normal text-[#7F7F7F]'>
+          To facilitate and provide a conducive platform for effective knowledge
+          sharing
+        </p>
+        <HeroArtDrag />
+      </section>
       {allExco.map((e, i) => (
         <div key={i}>
           <h3>{e.name}</h3>

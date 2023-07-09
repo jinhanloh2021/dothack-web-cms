@@ -5,7 +5,7 @@ interface SvgProps {
   [key: string]: any;
 }
 
-export const iconId = ['floatArt', 'logoNoShadow'];
+export const iconId = ['floatArt', 'logoNoShadow', 'fragmentArt'];
 
 export default function SpriteIcon({ id, ...props }: SvgProps) {
   return (

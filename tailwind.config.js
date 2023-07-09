@@ -34,6 +34,9 @@ module.exports = {
         offBlack: '#222222',
         offWhite: '#F7F7F7',
       },
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
