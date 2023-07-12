@@ -7,11 +7,11 @@ export default async function Home() {
   const allExco: ExcoQuery[] = await getExco();
   // console.log(JSON.stringify(allExco));
   return (
-    <main>
-      <section id='home' className='h-[90vh] relative'>
-        <div className='absolute top-[30%] left-0 right-0 m-auto text-center'>
-          <h1 className='font-bold text-7xl md:text-8xl tracking-widest'>
-            <span className='text-[#b6ffd2] dark:text-[#8dfbb7] font-sans'>
+    <main className='min-h-screen antialiased'>
+      <section id='hero' className='h-[100vh] relative max-w-6xl mx-auto'>
+        <div className='flex flex-col md:gap-1 items-center text-center select-none'>
+          <h1 className='font-bold text-7xl md:text-8xl tracking-widest mt-[25vh]'>
+            <span className='text-[#ADFFCD] dark:text-[#70FFA7] font-sans'>
               .
             </span>
             HACK
@@ -37,7 +37,7 @@ export default async function Home() {
           />
         </DragChild>
         <DragChild
-          className='absolute bottom-[40%] left-[15%]'
+          className='absolute bottom-[40%] left-[20%]'
           dragTransition={{ bounceStiffness: 600, bounceDamping: 50 }}
           whileDrag={{ scale: 1.2, opacity: 0.3 }}
         >

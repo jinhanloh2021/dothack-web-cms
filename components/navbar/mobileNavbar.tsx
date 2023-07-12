@@ -60,7 +60,7 @@ const MobileNavbar = () => {
     <AnimatePresence>
       {(visible || prevScrollPos <= 52) && (
         <motion.nav
-          className='py-4 fixed top-0'
+          className='py-4 fixed top-0 px-6 z-60'
           key={'key'}
           initial='hidden'
           animate='visible'
@@ -69,7 +69,7 @@ const MobileNavbar = () => {
         >
           <Sheet>
             <SheetTrigger>
-              <div className='h-9 w-9 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-400 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-slate-800 border border-slate-200 bg-white shadow-sm hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50'>
+              <div className='h-9 w-9 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-400 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-slate-800 border border-slate-200 bg-white shadow-sm hover:bg-slate-100 hover:text-slate-900 dark:border-[#2E4035] dark:bg-[#101411] dark:hover:bg-[#2E4035] dark:hover:text-slate-50'>
                 <HamburgerMenuIcon className='h-6 w-6' />
               </div>
             </SheetTrigger>
