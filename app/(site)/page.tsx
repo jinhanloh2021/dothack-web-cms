@@ -31,9 +31,11 @@ export default async function Home() {
         >
           <SpriteIcon
             id='fragmentArt'
-            className={
-              'absolute top-0 right-0 h-[4rem] w-[4rem] m-0 rotate-[-35deg] scale-[1] sm:scale-[1.2] md:scale-[1.4] dark:opacity-60 opacity-90'
+            svgClassName={
+              'absolute top-0 right-0 m-0 rotate-[-35deg] scale-[1] sm:scale-[1.2] md:scale-[1.4] dark:opacity-60 opacity-90'
             }
+            heightClass='h-[4rem]'
+            widthClass='w-[4rem]'
           />
         </DragChild>
         <DragChild
@@ -43,9 +45,11 @@ export default async function Home() {
         >
           <SpriteIcon
             id='fragmentArt'
-            className={
-              'absolute top-0 right-0 h-[4rem] w-[4rem] m-0 rotate-[10deg] scale-[.8] sm:scale-[1] md:scale-[1.1] dark:opacity-50 opacity-80'
+            svgClassName={
+              'absolute top-0 right-0 m-0 rotate-[10deg] scale-[.8] sm:scale-[1] md:scale-[1.1] dark:opacity-50 opacity-80'
             }
+            heightClass='h-[4rem]'
+            widthClass='w-[4rem]'
           />
         </DragChild>
         <DragChild
@@ -55,11 +59,46 @@ export default async function Home() {
         >
           <SpriteIcon
             id='fragmentArt'
-            className={
-              'absolute top-0 right-0 h-[4rem] w-[4rem] m-0 rotate-[-10deg] scale-[.6] sm:scale-[.8] md:scale-[.9] dark:opacity-40 opacity-70'
+            svgClassName={
+              'absolute top-0 right-0 m-0 rotate-[-10deg] scale-[.6] sm:scale-[.8] md:scale-[.9] dark:opacity-40 opacity-70'
             }
+            heightClass='h-[4rem]'
+            widthClass='w-[4rem]'
           />
         </DragChild>
+      </section>
+
+      <section className='mx-auto flex flex-col gap-8 max-w-[90%] sm:max-w-[80%] md:max-w-[750px] md:flex-row md:justify-between lg:max-w-[900px] xl:max-w-[1100px] mb-16'>
+        <article className='flex-1'>
+          <SpriteIcon
+            id='SeIllustration'
+            heightClass='h-32 md:h-36 lg:h-40'
+            widthClass='w-44 md:w-48 lg:w-52'
+            svgClassName='ml-8 mr-auto md:m-auto md:translate-y-2'
+          />
+          <h2 className='text-right text-[2.5rem] font-bold mx-4 mb-2 mt-4 md:text-center md:mx-auto'>
+            Who are we?
+          </h2>
+          <p className='text-right mx-4 text-base font-medium md:text-center md:mx-auto lg:w-[80%]'>
+            SMU .Hack is an interest group committed to spreading the passion
+            for technology through workshops and other events.
+          </p>
+        </article>
+        <article className='flex-1'>
+          <SpriteIcon
+            id='DeveloperIllustration'
+            heightClass='h-36 lg:h-40'
+            widthClass='w-40 md:w-44 lg:w-48'
+            svgClassName='ml-auto mr-8 md:m-auto'
+          />
+          <h2 className='text-left text-[2.5rem] font-bold mx-4 mb-2 mt-4 md:text-center md:mx-auto'>
+            Mission
+          </h2>
+          <p className='text-left mx-4 text-base font-medium md:text-center md:mx-auto lg:w-[80%]'>
+            To facilitate and provide a conducive platform for effective
+            knowledge sharing.
+          </p>
+        </article>
       </section>
       {allExco.map((e, i) => (
         <div key={i}>
