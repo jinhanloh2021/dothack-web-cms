@@ -1,7 +1,8 @@
-import SpriteIcon from '@/components/SpriteIcon';
-import DragChild from '@/components/dragChild';
-import { getExco } from '@/sanity/sanity.queries';
-import { ExcoQuery } from '@/types/Exco';
+import SpriteIcon from "@/components/SpriteIcon";
+import DragChild from "@/components/dragChild";
+import { Separator } from "@/components/ui/separator";
+import { getExco } from "@/sanity/sanity.queries";
+import { ExcoQuery } from "@/types/Exco";
 
 export default async function Home() {
   const allExco: ExcoQuery[] = await getExco();
@@ -32,7 +33,7 @@ export default async function Home() {
           <SpriteIcon
             id='fragmentArt'
             svgClassName={
-              'absolute top-0 right-0 m-0 rotate-[-35deg] scale-[1] sm:scale-[1.2] md:scale-[1.4] dark:opacity-60 opacity-90'
+              "absolute top-0 right-0 m-0 rotate-[-35deg] scale-[1] sm:scale-[1.2] md:scale-[1.4] dark:opacity-60 opacity-90"
             }
             heightClass='h-[4rem]'
             widthClass='w-[4rem]'
@@ -46,7 +47,7 @@ export default async function Home() {
           <SpriteIcon
             id='fragmentArt'
             svgClassName={
-              'absolute top-0 right-0 m-0 rotate-[10deg] scale-[.8] sm:scale-[1] md:scale-[1.1] dark:opacity-50 opacity-80'
+              "absolute top-0 right-0 m-0 rotate-[10deg] scale-[.8] sm:scale-[1] md:scale-[1.1] dark:opacity-50 opacity-80"
             }
             heightClass='h-[4rem]'
             widthClass='w-[4rem]'
@@ -60,7 +61,7 @@ export default async function Home() {
           <SpriteIcon
             id='fragmentArt'
             svgClassName={
-              'absolute top-0 right-0 m-0 rotate-[-10deg] scale-[.6] sm:scale-[.8] md:scale-[.9] dark:opacity-40 opacity-70'
+              "absolute top-0 right-0 m-0 rotate-[-10deg] scale-[.6] sm:scale-[.8] md:scale-[.9] dark:opacity-40 opacity-70"
             }
             heightClass='h-[4rem]'
             widthClass='w-[4rem]'
@@ -100,6 +101,11 @@ export default async function Home() {
           </p>
         </article>
       </section>
+      <Separator className='bg-zinc-200 dark:bg-zinc-700 w-[80%] mx-auto' />
+      <h2 className='text-center text-[2.5rem] font-bold mx-4 mb-2 mt-4 md:mx-auto'>
+        Our Team
+      </h2>
+      <section className='min-w-[90%] h-32'></section>
       {allExco.map((e, i) => (
         <div key={i}>
           <h3>{e.name}</h3>
@@ -109,3 +115,12 @@ export default async function Home() {
     </main>
   );
 }
+
+/**
+ * Tailwind breakpoints
+ * sm 640px
+ * md 768px
+ * lg 1024px
+ * xl 1280px
+ * 2xl 1536px
+ */
