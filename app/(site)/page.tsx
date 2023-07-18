@@ -3,9 +3,11 @@ import DragChild from "@/components/dragChild";
 import { Separator } from "@/components/ui/separator";
 import { getExco } from "@/sanity/sanity.queries";
 import { ExcoQuery } from "@/types/Exco";
+import Image from "next/image";
 
 export default async function Home() {
   const allExco: ExcoQuery[] = await getExco();
+  const first = allExco[0];
   // console.log(JSON.stringify(allExco));
   return (
     <main className='min-h-screen antialiased'>
@@ -102,10 +104,32 @@ export default async function Home() {
         </article>
       </section>
       <Separator className='bg-zinc-200 dark:bg-zinc-700 w-[80%] mx-auto' />
-      <h2 className='text-center text-[2.5rem] font-bold mx-4 mb-2 mt-4 md:mx-auto'>
+      <h2 className='text-center text-[2.5rem] font-bold mx-4 mb-2 mt-16 md:mx-auto'>
         Our Team
       </h2>
-      <section className='min-w-[90%] h-32'></section>
+      <section className='max-w-[85%] mx-auto grid grid-cols-2 justify-items-center gap-y-4'>
+        <div className='h-48 w-36 relative'>
+          <Image
+            src={first.imageSrc ?? ""}
+            alt=''
+            fill
+            style={{ objectFit: "cover" }}
+            sizes='(max-width: 768) 50vw, 33vw'
+            placeholder='blur'
+            blurDataURL={first.lqip}
+          />
+        </div><div className='h-48 w-36 relative'>
+          <Image
+            src={first.imageSrc ?? ""}
+            alt=''
+            fill
+            style={{ objectFit: "cover" }}
+            sizes='(max-width: 768) 50vw, 33vw'
+            placeholder='blur'
+            blurDataURL={first.lqip}
+          />
+        </div>
+      </section>
       {allExco.map((e, i) => (
         <div key={i}>
           <h3>{e.name}</h3>
