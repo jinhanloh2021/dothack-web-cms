@@ -1,14 +1,13 @@
-import SpriteIcon from "@/components/SpriteIcon";
-import DragChild from "@/components/dragChild";
-import { Separator } from "@/components/ui/separator";
-import { getExco } from "@/sanity/sanity.queries";
-import { ExcoQuery } from "@/types/Exco";
-import Image from "next/image";
+import SpriteIcon from '@/components/SpriteIcon';
+import DragChild from '@/components/dragChild';
+import ExcoCard from '@/components/excoCard';
+import { Separator } from '@/components/ui/separator';
+import { sortExco } from '@/lib/utils';
+import { getExco } from '@/sanity/sanity.queries';
+import { ExcoQuery } from '@/types/Exco';
 
 export default async function Home() {
-  const allExco: ExcoQuery[] = await getExco();
-  const first = allExco[0];
-  // console.log(JSON.stringify(allExco));
+  const sortedExco: ExcoQuery[] = sortExco(await getExco());
   return (
     <main className='min-h-screen antialiased'>
       <section id='hero' className='h-[100vh] relative max-w-6xl mx-auto'>
@@ -35,7 +34,7 @@ export default async function Home() {
           <SpriteIcon
             id='fragmentArt'
             svgClassName={
-              "absolute top-0 right-0 m-0 rotate-[-35deg] scale-[1] sm:scale-[1.2] md:scale-[1.4] dark:opacity-60 opacity-90"
+              'absolute top-0 right-0 m-0 rotate-[-35deg] scale-[1] sm:scale-[1.2] md:scale-[1.4] dark:opacity-60 opacity-90'
             }
             heightClass='h-[4rem]'
             widthClass='w-[4rem]'
@@ -49,7 +48,7 @@ export default async function Home() {
           <SpriteIcon
             id='fragmentArt'
             svgClassName={
-              "absolute top-0 right-0 m-0 rotate-[10deg] scale-[.8] sm:scale-[1] md:scale-[1.1] dark:opacity-50 opacity-80"
+              'absolute top-0 right-0 m-0 rotate-[10deg] scale-[.8] sm:scale-[1] md:scale-[1.1] dark:opacity-50 opacity-80'
             }
             heightClass='h-[4rem]'
             widthClass='w-[4rem]'
@@ -63,7 +62,7 @@ export default async function Home() {
           <SpriteIcon
             id='fragmentArt'
             svgClassName={
-              "absolute top-0 right-0 m-0 rotate-[-10deg] scale-[.6] sm:scale-[.8] md:scale-[.9] dark:opacity-40 opacity-70"
+              'absolute top-0 right-0 m-0 rotate-[-10deg] scale-[.6] sm:scale-[.8] md:scale-[.9] dark:opacity-40 opacity-70'
             }
             heightClass='h-[4rem]'
             widthClass='w-[4rem]'
@@ -107,35 +106,17 @@ export default async function Home() {
       <h2 className='text-center text-[2.5rem] font-bold mx-4 mb-2 mt-16 md:mx-auto'>
         Our Team
       </h2>
-      <section className='max-w-[85%] mx-auto grid grid-cols-2 justify-items-center gap-y-4'>
-        <div className='h-48 w-36 relative'>
-          <Image
-            src={first.imageSrc ?? ""}
-            alt=''
-            fill
-            style={{ objectFit: "cover" }}
-            sizes='(max-width: 768) 50vw, 33vw'
-            placeholder='blur'
-            blurDataURL={first.lqip}
+      <section className='w-[20rem] sm:w-[30rem] md:w-[39rem] xl:w-[48rem] grid grid-cols-2 sm:grid-cols-3 justify-items-center gap-y-4 mx-auto'>
+        {sortedExco.map((e, i) => (
+          <ExcoCard
+            key={i}
+            src={e.imageSrc}
+            name={e.name}
+            position={e.position}
+            lqip={e.lqip}
           />
-        </div><div className='h-48 w-36 relative'>
-          <Image
-            src={first.imageSrc ?? ""}
-            alt=''
-            fill
-            style={{ objectFit: "cover" }}
-            sizes='(max-width: 768) 50vw, 33vw'
-            placeholder='blur'
-            blurDataURL={first.lqip}
-          />
-        </div>
+        ))}
       </section>
-      {allExco.map((e, i) => (
-        <div key={i}>
-          <h3>{e.name}</h3>
-          <p className='break-words'>{JSON.stringify(e, null, 2)}</p>
-        </div>
-      ))}
     </main>
   );
 }

@@ -34,3 +34,24 @@ export enum Position {
   PublicRelationsExecutive = 'Public Relations Executive',
   Other = 'Other',
 }
+
+export const excoSortOrder: { [position: string]: number } = {
+  'President': 0,
+  'Vice President (internal)': 10,
+  'Vice President (external)': 20,
+  'Honorary General Secretary': 30,
+  'Honorary Finance Secretary': 40,
+  'Marketing Director': 50,
+  'Professional Development Director': 60,
+  'Tech Director': 70,
+  'Training Director': 80,
+  'Public Relations Director': 90,
+  'General Executive': 100,
+  'Finance Executive': 110,
+  'Marketing Executive': 120,
+  'Professional Development Executive': 130,
+  'Tech Executive': 140,
+  'Training Executive': 150,
+  'Public Relations Executive': 160,
+  'Other': 170,
+};
