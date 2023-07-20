@@ -289,7 +289,6 @@
       </defs>
     </symbol>
 
-
     <symbol viewBox="0 0 194 131" fill="none"
       xmlns="http://www.w3.org/2000/svg" id="SeIllustration">
       <g clip-path="url(#clip0_412_334)">
@@ -543,22 +542,13 @@
         </clipPath>
       </defs>
     </symbol>
-    <!-- <symbol viewBox="0 0 1258 1285" fill="none"
-      xmlns="http://www.w3.org/2000/svg" id="cometHero">
-      <g filter="url(#filter0_f_762_20)">
-        <path d="M1094 399.581C789.759 633.875 177.822 1106.17 164 1121L720.648 164L1094 399.581Z"
-          fill="#84FF81" />
-      </g>
-      <defs>
-        <filter id="filter0_f_762_20" x="-164" y="-164" width="1586" height="1584"
-          filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-          <feGaussianBlur stdDeviation="82" result="effect1_foregroundBlur_762_20" />
-        </filter>
-      </defs>
-    </symbol> -->
-
-    
   </defs>
 </svg>
+
+<!-- 
+  Notes:
+  To add, replace svg with symbol, remove width and height, set id
+  Or to optimise svg, go to https://www.svgomg.net/
+  
+  SVGs with linear gradients WILL NOT WORK
+ -->
