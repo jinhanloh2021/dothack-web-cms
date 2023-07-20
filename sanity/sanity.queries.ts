@@ -46,9 +46,10 @@ export async function getExco(): Promise<ExcoQuery[]> {
 // Blur the image
 // https://cdn.sanity.io/images/zp7mbokg/production/G3i4emG6B8JnTmGoN0UjgAp8-300x450.jpg?blur=50
 
-export async function getEvents() {
+// Ordered from latest to earliest
+export async function getAllEvents() {
   return createClient(clientConfig).fetch(
-    groq`*[_type == 'event'] {
+    groq`*[_type == 'event'] | order(date desc) {
       name,
       date,
       "slug": slug.current,
@@ -71,6 +72,30 @@ export async function getEvents() {
   );
 }
 
+export async function getLatestEvent() {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == 'event'] | order(date desc)[0] {
+      name,
+      date,
+      "slug": slug.current,
+      "image": {
+        "src": image.asset->url,
+        "alt": image.alt,
+        "lqip": image.asset->metadata.lqip,
+        "hotspot": image.hotspot,
+      },
+      "author": {
+        "name": author->name,
+        "position": author->position,
+        "image": {
+          "src": author->profile_pic.asset->url,
+        }
+      },
+      excerpt,
+      // content
+    }`
+  );
+}
 export async function getEvent(slug: string) {
   return createClient(clientConfig).fetch(
     groq`*[_type == "event" && slug.current == $slug][0] {

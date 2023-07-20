@@ -1,13 +1,16 @@
+import Image from 'next/image';
 import SpriteIcon from '@/components/SpriteIcon';
 import DragChild from '@/components/dragChild';
 import ExcoCard from '@/components/excoCard';
 import { Separator } from '@/components/ui/separator';
 import { sortExco } from '@/lib/utils';
-import { getExco } from '@/sanity/sanity.queries';
+import { getExco, getLatestEvent } from '@/sanity/sanity.queries';
 import { ExcoQuery } from '@/types/Exco';
 
 export default async function Home() {
   const sortedExco: ExcoQuery[] = sortExco(await getExco());
+  const latestEvent = await getLatestEvent();
+  // console.log(JSON.stringify(latestEvent, null, 2));
   return (
     <main className='relative min-h-screen antialiased overflow-hidden'>
       <section id='hero' className='h-[90vh] relative max-w-6xl mx-auto'>
@@ -103,75 +106,98 @@ export default async function Home() {
         </article>
       </section>
       <Separator className='bg-zinc-200 dark:bg-zinc-700 w-[80%] mx-auto' />
-      <h2 className='text-center text-[2.5rem] font-bold mx-4 mb-2 mt-16 md:mx-auto'>
-        Our Team
-      </h2>
-      <section className='w-[20rem] sm:w-[30rem] md:w-[39rem] xl:w-[48rem] grid grid-cols-2 sm:grid-cols-3 justify-items-center gap-y-4 mx-auto'>
-        {sortedExco.map((e, i) => (
-          <ExcoCard
-            key={i}
-            src={e.imageSrc}
-            name={e.name}
-            position={e.position}
-            lqip={e.lqip}
-          />
-        ))}
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          viewBox='0 0 1258 1256'
-          className='absolute h-[100vh] w-[200vw] md:w-[160vw] top-[-5vh] left-[-40vw] md:left-[-25vw] -z-10 rotate-[270deg] overflow-hidden'
-        >
-          <g clip-path='url(#a)' filter='url(#b)'>
-            <path
-              fill='url(#c)'
-              d='M1094 400c-304 234-916 706-930 721l557-957 373 236Z'
+      <section className='pb-10'>
+        <h2 className='text-center text-[2.5rem] font-bold mx-4 mt-4 md:text-center md:mx-auto'>
+          Meet Our Team
+        </h2>
+        <p className='text-left text-[1rem] font-semibold mb-2 w-[19rem] sm:w-[30rem] md:w-[39rem] mx-auto text-zinc-500'>
+          of curious learners, passionate teachers, and determined developers.
+        </p>
+        <div className='w-[20rem] sm:w-[30rem] md:w-[39rem] xl:w-[48rem] grid grid-cols-2 sm:grid-cols-3 justify-items-center gap-y-4 mx-auto'>
+          {sortedExco.map((e, i) => (
+            <ExcoCard
+              key={i}
+              src={e.imageSrc}
+              name={e.name}
+              position={e.position}
+              lqip={e.lqip}
             />
-          </g>
-          <defs>
-            <linearGradient
-              id='c'
-              x1='149.7'
-              x2='943.7'
-              y1='1138.8'
-              y2='331.3'
-              gradientUnits='userSpaceOnUse'
-            >
-              <stop
-                stop-color='currentColor'
-                className='text-[#7affebdf] dark:text-[#7affeb08]'
-              />
-              <stop
-                offset='1'
-                stop-color='currentColor'
-                className='text-[#dff7afc6] dark:text-[#084e234c]'
-              />
-            </linearGradient>
-            <clipPath id='a'>
-              <path fill='#fff' d='M0 0h1258v1256H0z' />
-            </clipPath>
-            <filter
-              id='b'
-              width='1258'
-              height='1285'
-              x='0'
-              y='0'
-              color-interpolation-filters='sRGB'
-              filterUnits='userSpaceOnUse'
-            >
-              <feFlood flood-opacity='0' result='BackgroundImageFix' />
-              <feBlend
-                in='SourceGraphic'
-                in2='BackgroundImageFix'
-                result='shape'
-              />
-              <feGaussianBlur
-                result='effect1_foregroundBlur_762_17'
-                stdDeviation='82'
-              />
-            </filter>
-          </defs>
-        </svg>
+          ))}
+        </div>
       </section>
+      <Separator className='bg-zinc-200 dark:bg-zinc-700 w-[80%] mx-auto' />
+      <section>
+        <h2 className='text-center text-[2.5rem] font-bold mx-4 mt-4 md:text-center md:mx-auto'>
+          Events
+        </h2>
+        <h3>{latestEvent.name}</h3>
+        <p>By {latestEvent.author.name}</p>
+        <p>{latestEvent.date}</p>
+        <Image
+          src={latestEvent.image.src}
+          alt={latestEvent.image.alt}
+          width={100}
+          height={100}
+        />
+        <p>{latestEvent.excerpt}</p>
+        <br />
+        {JSON.stringify(latestEvent, null, 2)}
+      </section>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 1258 1256'
+        className='absolute h-[100vh] w-[200vw] md:w-[160vw] top-[-5vh] left-[-40vw] md:left-[-25vw] -z-10 rotate-[270deg] overflow-hidden'
+      >
+        <g clip-path='url(#a)' filter='url(#b)'>
+          <path
+            fill='url(#c)'
+            d='M1094 400c-304 234-916 706-930 721l557-957 373 236Z'
+          />
+        </g>
+        <defs>
+          <linearGradient
+            id='c'
+            x1='149.7'
+            x2='943.7'
+            y1='1138.8'
+            y2='331.3'
+            gradientUnits='userSpaceOnUse'
+          >
+            <stop
+              stop-color='currentColor'
+              className='text-[#7affebdf] dark:text-[#7affeb08]'
+            />
+            <stop
+              offset='1'
+              stop-color='currentColor'
+              className='text-[#dff7afc6] dark:text-[#084e234c]'
+            />
+          </linearGradient>
+          <clipPath id='a'>
+            <path fill='#fff' d='M0 0h1258v1256H0z' />
+          </clipPath>
+          <filter
+            id='b'
+            width='1258'
+            height='1285'
+            x='0'
+            y='0'
+            color-interpolation-filters='sRGB'
+            filterUnits='userSpaceOnUse'
+          >
+            <feFlood flood-opacity='0' result='BackgroundImageFix' />
+            <feBlend
+              in='SourceGraphic'
+              in2='BackgroundImageFix'
+              result='shape'
+            />
+            <feGaussianBlur
+              result='effect1_foregroundBlur_762_17'
+              stdDeviation='82'
+            />
+          </filter>
+        </defs>
+      </svg>
     </main>
   );
 }

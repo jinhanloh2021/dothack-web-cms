@@ -1,11 +1,11 @@
-import { getEvents } from '@/sanity/sanity.queries';
+import { getAllEvents } from '@/sanity/sanity.queries';
 import Link from 'next/link';
 import React from 'react';
 
 type Props = {};
 
 export default async function Events({}: Props) {
-  const allEvents = await getEvents();
+  const allEvents = await getAllEvents();
   // console.log(allEvents);
   return (
     <main>
