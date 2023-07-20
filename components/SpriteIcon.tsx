@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 interface SvgProps {
   id: string;
-  heightClass?: string; //width and height for setting SIZE of SVG
+  heightClass?: string; //width and height for setting SIZE of SVG can be responsive
   widthClass?: string;
   svgClassName?: string; // for setting POSITION of SVG. Absolute, inline, etc
   useClassName?: string;
@@ -14,6 +14,7 @@ export const iconId = [
   'fragmentArt',
   'SeIllustration',
   'DeveloperIllustration',
+  'cometHero',
 ];
 
 // Responsive size and position. Cannot make responsive colour for dark/light mode. Use inline SVG instead.

@@ -9,13 +9,11 @@ import { ExcoQuery } from '@/types/Exco';
 export default async function Home() {
   const sortedExco: ExcoQuery[] = sortExco(await getExco());
   return (
-    <main className='min-h-screen antialiased'>
-      <section id='hero' className='h-[100vh] relative max-w-6xl mx-auto'>
+    <main className='relative min-h-screen antialiased overflow-hidden'>
+      <section id='hero' className='h-[90vh] relative max-w-6xl mx-auto'>
         <div className='flex flex-col md:gap-1 items-center text-center select-none'>
-          <h1 className='font-bold text-7xl md:text-8xl tracking-widest mt-[25vh]'>
-            <span className='text-[#ADFFCD] dark:text-[#70FFA7] font-sans'>
-              .
-            </span>
+          <h1 className='font-bold text-7xl md:text-8xl tracking-widest mt-[30vh]'>
+            <span className='text-[#ADFFCD] font-sans'>.</span>
             HACK
           </h1>
           <h3 className='font-medium text-lg md:text-xl'>
@@ -26,6 +24,55 @@ export default async function Home() {
             knowledge sharing
           </p>
         </div>
+
+        {/* <svg
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 1258 1256'
+          className='absolute h-[60rem] w-[60rem] -top-12 right-0 opacity-40 dark:opacity-[.05] -z-10 overflow-hidden'
+        >
+          <g clip-path='url(#a)' filter='url(#b)'>
+            <path
+              fill='url(#c)'
+              d='M1094 400c-304 234-916 706-930 721l557-957 373 236Z'
+            />
+          </g>
+          <defs>
+            <linearGradient
+              id='c'
+              x1='149.7'
+              x2='943.7'
+              y1='1138.8'
+              y2='331.3'
+              gradientUnits='userSpaceOnUse'
+            >
+              <stop stop-color='#84FF81' />
+              <stop offset='1' stop-color='#AFF7D4' />
+            </linearGradient>
+            <clipPath id='a'>
+              <path fill='#fff' d='M0 0h1258v1256H0z' />
+            </clipPath>
+            <filter
+              id='b'
+              width='1258'
+              height='1285'
+              x='0'
+              y='0'
+              color-interpolation-filters='sRGB'
+              filterUnits='userSpaceOnUse'
+            >
+              <feFlood flood-opacity='0' result='BackgroundImageFix' />
+              <feBlend
+                in='SourceGraphic'
+                in2='BackgroundImageFix'
+                result='shape'
+              />
+              <feGaussianBlur
+                result='effect1_foregroundBlur_762_17'
+                stdDeviation='82'
+              />
+            </filter>
+          </defs>
+        </svg> */}
         <DragChild
           className='absolute bottom-[25%] right-[5%]'
           dragTransition={{ bounceStiffness: 600, bounceDamping: 30 }}
@@ -55,7 +102,7 @@ export default async function Home() {
           />
         </DragChild>
         <DragChild
-          className='absolute top-[5%] right-[15%]'
+          className='absolute top-[10%] right-[15%]'
           dragTransition={{ bounceStiffness: 600, bounceDamping: 100 }}
           whileDrag={{ scale: 1.2, opacity: 0.3 }}
         >
@@ -116,6 +163,54 @@ export default async function Home() {
             lqip={e.lqip}
           />
         ))}
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 1258 1256'
+          className='absolute h-[100vh] w-[200vw] md:w-[160vw] top-[-5vh] left-[-40vw] md:left-[-25vw] opacity-90 dark:opacity-90 -z-10 rotate-[270deg] overflow-hidden'
+        >
+          <g clip-path='url(#a)' filter='url(#b)'>
+            <path
+              fill='url(#c)'
+              d='M1094 400c-304 234-916 706-930 721l557-957 373 236Z'
+            />
+          </g>
+          <defs>
+            <linearGradient
+              id='c'
+              x1='149.7'
+              x2='943.7'
+              y1='1138.8'
+              y2='331.3'
+              gradientUnits='userSpaceOnUse'
+            >
+              <stop stop-color='var(--comet-hero-gradient-start)' />
+              <stop offset='1' stop-color='var(--comet-hero-gradient-end)' />
+            </linearGradient>
+            <clipPath id='a'>
+              <path fill='#fff' d='M0 0h1258v1256H0z' />
+            </clipPath>
+            <filter
+              id='b'
+              width='1258'
+              height='1285'
+              x='0'
+              y='0'
+              color-interpolation-filters='sRGB'
+              filterUnits='userSpaceOnUse'
+            >
+              <feFlood flood-opacity='0' result='BackgroundImageFix' />
+              <feBlend
+                in='SourceGraphic'
+                in2='BackgroundImageFix'
+                result='shape'
+              />
+              <feGaussianBlur
+                result='effect1_foregroundBlur_762_17'
+                stdDeviation='82'
+              />
+            </filter>
+          </defs>
+        </svg>
       </section>
     </main>
   );

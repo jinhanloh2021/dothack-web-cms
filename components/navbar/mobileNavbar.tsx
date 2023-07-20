@@ -60,7 +60,7 @@ const MobileNavbar = () => {
     <AnimatePresence>
       {(visible || prevScrollPos <= 52) && (
         <motion.nav
-          className='py-4 fixed top-0 px-6 z-50'
+          className='py-4 fixed top-0 px-6 z-50 bg-transparent'
           key={'key'}
           initial='hidden'
           animate='visible'
