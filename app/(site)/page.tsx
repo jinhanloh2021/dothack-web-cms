@@ -2,6 +2,7 @@ import Image from 'next/image';
 import SpriteIcon from '@/components/SpriteIcon';
 import DragChild from '@/components/dragChild';
 import ExcoCard from '@/components/excoCard';
+import EventCard from '@/components/eventCard';
 import { Separator } from '@/components/ui/separator';
 import { sortExco } from '@/lib/utils';
 import { getCurrentCoreExco, getLatestEvent } from '@/sanity/sanity.queries';
@@ -126,20 +127,22 @@ export default async function Home() {
         </div>
       </section>
       <Separator className='bg-zinc-200 dark:bg-zinc-700 w-[80%] mx-auto' />
-      <section>
-        <h2 className='text-center text-[2.5rem] font-bold mx-4 mt-4 md:text-center md:mx-auto'>
+      <section className='pb-10 mt-16'>
+        <h2 className='text-center text-[2.5rem] font-bold md:text-center md:mx-auto mb-2'>
           Events
         </h2>
-        <h3>{latestEvent.name}</h3>
-        <p>By {latestEvent.author.name}</p>
-        <p>{latestEvent.date}</p>
-        <Image
+        <p className='text-center mx-4 sm:mx-auto text-base font-medium dark:text-textSecondaryDark text-textSecondaryLight mb-8 sm:max-w-[80%] lg:max-w-[60%]'>
+          Check out our latest event!
+        </p>
+        <EventCard
           src={latestEvent.image.src}
           alt={latestEvent.image.alt}
-          width={100}
-          height={100}
+          name={latestEvent.name}
+          author={latestEvent.author.name}
+          date={latestEvent.date}
+          lqip={latestEvent.image.lqip}
+          excerpt={latestEvent.excerpt}
         />
-        <p>{latestEvent.excerpt}</p>
         <br />
         {JSON.stringify(latestEvent, null, 2)}
       </section>
@@ -148,7 +151,7 @@ export default async function Home() {
         viewBox='0 0 1258 1256'
         className='absolute h-[100vh] w-[200vw] md:w-[160vw] top-[-5vh] left-[-40vw] md:left-[-25vw] -z-10 rotate-[270deg] overflow-hidden'
       >
-        <g clip-path='url(#a)' filter='url(#b)'>
+        <g clipPath='url(#a)' filter='url(#b)'>
           <path
             fill='url(#c)'
             d='M1094 400c-304 234-916 706-930 721l557-957 373 236Z'
@@ -164,12 +167,12 @@ export default async function Home() {
             gradientUnits='userSpaceOnUse'
           >
             <stop
-              stop-color='currentColor'
+              stopColor='currentColor'
               className='text-[#7affebdf] dark:text-[#7affeb08]'
             />
             <stop
               offset='1'
-              stop-color='currentColor'
+              stopColor='currentColor'
               className='text-[#dff7afc6] dark:text-[#084e234c]'
             />
           </linearGradient>
@@ -182,10 +185,10 @@ export default async function Home() {
             height='1285'
             x='0'
             y='0'
-            color-interpolation-filters='sRGB'
+            colorInterpolationFilters='sRGB'
             filterUnits='userSpaceOnUse'
           >
-            <feFlood flood-opacity='0' result='BackgroundImageFix' />
+            <feFlood floodOpacity='0' result='BackgroundImageFix' />
             <feBlend
               in='SourceGraphic'
               in2='BackgroundImageFix'

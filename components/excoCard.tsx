@@ -18,7 +18,7 @@ export default function ExcoCard({ src, name, position, lqip }: Props) {
             alt={`${name} ${position} of dotHack`}
             fill
             style={{ objectFit: 'cover' }}
-            sizes='(max-width: 640) 40vw, (max-width: 768) 25vw, 30vw'
+            sizes='(max-width: 640) 80vw, (max-width: 768) 50vw, 30vw'
             placeholder='blur'
             blurDataURL={lqip}
           />
