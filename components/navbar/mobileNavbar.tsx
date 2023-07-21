@@ -69,7 +69,7 @@ const MobileNavbar = () => {
         >
           <Sheet>
             <SheetTrigger>
-              <div className='h-9 w-9 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-400 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-slate-800 border border-slate-200 bg-white shadow-sm hover:bg-slate-100 hover:text-slate-900 dark:border-[#2E4035] dark:bg-[#101411] dark:hover:bg-[#2E4035] dark:hover:text-slate-50'>
+              <div className='h-9 w-9 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-400 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-slate-800 border border-slate-200 shadow-sm hover:bg-slate-100 hover:text-slate-900 dark:border-[#2E4035] dark:hover:bg-[#2E4035] dark:hover:text-slate-50 dark:bg-gray-800 dark:bg-clip-padding dark:backdrop-filter dark:backdrop-blur-sm dark:bg-opacity-10 bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 '>
                 <HamburgerMenuIcon className='h-6 w-6' />
               </div>
             </SheetTrigger>

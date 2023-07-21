@@ -24,7 +24,7 @@ export default async function Home() {
           <h3 className='font-medium text-lg md:text-xl'>
             Solving the problems of tomorrow
           </h3>
-          <p className='font-medium text-xs md:text-sm leading-normal text-[#7F7F7F] max-w-[80%] md:max-w-[70%] m-auto'>
+          <p className='font-medium text-xs md:text-sm leading-normal text-textSecondaryLight dark:text-textSecondaryDark max-w-[80%] md:max-w-[70%] m-auto'>
             To facilitate and provide a conducive platform for effective
             knowledge sharing
           </p>
@@ -84,7 +84,7 @@ export default async function Home() {
           <h2 className='text-right text-[2.5rem] font-bold mx-4 mb-2 mt-4 md:text-center md:mx-auto'>
             Who are we?
           </h2>
-          <p className='text-right mx-4 text-base font-medium md:text-center md:mx-auto lg:w-[80%]'>
+          <p className='text-right text-textSecondaryLight dark:text-textSecondaryDark mx-4 text-base font-medium md:text-center md:mx-auto lg:w-[80%]'>
             SMU .Hack is an interest group committed to spreading the passion
             for technology through workshops and other events.
           </p>
@@ -99,21 +99,21 @@ export default async function Home() {
           <h2 className='text-left text-[2.5rem] font-bold mx-4 mb-2 mt-4 md:text-center md:mx-auto'>
             Mission
           </h2>
-          <p className='text-left mx-4 text-base font-medium md:text-center md:mx-auto lg:w-[80%]'>
+          <p className='text-left text-textSecondaryLight dark:text-textSecondaryDark mx-4 text-base font-medium md:text-center md:mx-auto lg:w-[80%]'>
             To facilitate and provide a conducive platform for effective
             knowledge sharing.
           </p>
         </article>
       </section>
       <Separator className='bg-zinc-200 dark:bg-zinc-700 w-[80%] mx-auto' />
-      <section className='pb-10'>
-        <h2 className='text-center text-[2.5rem] font-bold mx-4 mt-4 md:text-center md:mx-auto'>
-          Meet Our Team
+      <section className='pb-10 mt-16'>
+        <h2 className='text-center text-[2.5rem] font-bold md:text-center md:mx-auto mb-2'>
+          Our Team
         </h2>
-        <p className='text-left text-[1rem] font-semibold mb-2 w-[19rem] sm:w-[30rem] md:w-[39rem] mx-auto text-zinc-500'>
-          of curious learners, passionate teachers, and determined developers.
+        <p className='text-center mx-4 sm:mx-auto text-base font-medium dark:text-textSecondaryDark text-textSecondaryLight mb-8 sm:max-w-[80%] lg:max-w-[60%]'>
+          Meet our diverse team of learners, builders, teachers!
         </p>
-        <div className='w-[20rem] sm:w-[30rem] md:w-[39rem] xl:w-[48rem] grid grid-cols-2 sm:grid-cols-3 justify-items-center gap-y-4 mx-auto'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:w-[36rem] lg:w-[54rem] mx-auto justify-items-center gap-y-12'>
           {sortedExco.map((e, i) => (
             <ExcoCard
               key={i}

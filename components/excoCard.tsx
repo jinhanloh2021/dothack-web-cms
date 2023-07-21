@@ -11,7 +11,7 @@ type Props = {
 export default function ExcoCard({ src, name, position, lqip }: Props) {
   return (
     <div>
-      <div className='h-48 w-36 md:h-64 md:w-48 xl:w-60 xl:h-72 relative rounded-lg overflow-hidden flex flex-col justify-end bg-zinc-200 dark:bg-[#282828] mx-auto'>
+      <div className='h-[20rem] w-[16rem] relative rounded-lg overflow-hidden flex flex-col justify-end bg-zinc-200 dark:bg-[#282828]'>
         {src ? (
           <Image
             src={src}
@@ -26,7 +26,7 @@ export default function ExcoCard({ src, name, position, lqip }: Props) {
           <svg
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 159 170'
-            className='h-36 md:h-48'
+            className='h-[15rem]'
           >
             <path
               className='fill-zinc-400 dark:fill-zinc-600'
@@ -35,12 +35,10 @@ export default function ExcoCard({ src, name, position, lqip }: Props) {
           </svg>
         )}
       </div>
-      <p className='text-sm max-w-[9rem] md:max-w-[12rem] xl:max-w-[15rem]'>
-        {name}
-      </p>
-      <p className='text-sm max-w-[9rem] md:max-w-[12rem] xl:max-w-[15rem]'>
+      <p className='text-sm text-textSecondaryLight dark:text-textSecondaryDark max-w-[36rem] mt-4'>
         {position}
       </p>
+      <p className='text-base font-medium font-nunito max-w-[36rem]'>{name}</p>
     </div>
   );
 }

@@ -33,9 +33,12 @@ module.exports = {
       colors: {
         offBlack: '#222222',
         offWhite: '#F7F7F7',
+        textSecondaryDark: '#919191',
+        textSecondaryLight: '#7e7e7e',
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
+        nunito: ['Nunito', 'sans-serif'],
       },
     },
   },
