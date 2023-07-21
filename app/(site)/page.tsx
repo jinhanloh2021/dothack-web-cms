@@ -4,11 +4,11 @@ import DragChild from '@/components/dragChild';
 import ExcoCard from '@/components/excoCard';
 import { Separator } from '@/components/ui/separator';
 import { sortExco } from '@/lib/utils';
-import { getExco, getLatestEvent } from '@/sanity/sanity.queries';
+import { getCurrentCoreExco, getLatestEvent } from '@/sanity/sanity.queries';
 import { ExcoQuery } from '@/types/Exco';
 
 export default async function Home() {
-  const sortedExco: ExcoQuery[] = sortExco(await getExco());
+  const sortedExco: ExcoQuery[] = sortExco(await getCurrentCoreExco());
   const latestEvent = await getLatestEvent();
   // console.log(JSON.stringify(latestEvent, null, 2));
   return (

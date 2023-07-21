@@ -1,3 +1,4 @@
+import { getCurrentAY } from '@/lib/utils';
 import { ImageRule, StringRule } from 'sanity';
 
 const exco = {
@@ -62,12 +63,7 @@ const exco = {
         ],
       },
       initialValue: () => {
-        const currentYear = new Date().getFullYear(); // Assume elections in September
-        if (new Date().getMonth() < 8) {
-          return `AY${(currentYear - 1) % 100}/${currentYear % 100}`;
-        } else {
-          return `AY${currentYear % 100}/${(currentYear + 1) % 100}`;
-        }
+        return getCurrentAY();
       },
       validation: (Rule: StringRule) => [
         Rule.required().error('Term of EXCO is required'),

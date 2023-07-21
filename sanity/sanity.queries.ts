@@ -1,10 +1,11 @@
 import { ExcoQuery } from '@/types/Exco';
 import clientConfig from './client.config';
 import { createClient, groq } from 'next-sanity';
+import { getCurrentAY } from '@/lib/utils';
 
-export async function getExco(): Promise<ExcoQuery[]> {
+export async function getCurrentCoreExco(): Promise<ExcoQuery[]> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == 'exco'] | order(term desc, position){
+    groq`*[_type == 'exco' && (position == 'President' || position == 'Vice President (internal)' || position == 'Vice President (external)' || position == 'Honorary General Secretary' || position == 'Honorary Finance Secretary') && term == "${getCurrentAY()}"] | order(term desc, position){
       name,
       position,
       term,
@@ -14,6 +15,8 @@ export async function getExco(): Promise<ExcoQuery[]> {
     }`
   );
 }
+
+// groq query template literals need to be enclosed in double quotes groq` "${}" `;
 
 // const confirmedQueryShape = {
 //   name: 'Jason Gu Yaochen',
