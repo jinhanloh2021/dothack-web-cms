@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import SpriteIcon from '@/components/SpriteIcon';
 import DragChild from '@/components/dragChild';
 import ExcoCard from '@/components/excoCard';
@@ -135,6 +134,7 @@ export default async function Home() {
           Check out our latest event!
         </p>
         <EventCard
+          slug={latestEvent.slug}
           src={latestEvent.image.src}
           alt={latestEvent.image.alt}
           name={latestEvent.name}

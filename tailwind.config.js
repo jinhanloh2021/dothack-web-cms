@@ -32,9 +32,9 @@ module.exports = {
       },
       colors: {
         offBlack: '#222222',
-        offWhite: '#F7F7F7',
-        textSecondaryDark: '#919191',
-        textSecondaryLight: '#7e7e7e',
+        offWhite: '#F4F4F4',
+        textSecondaryDark: '#A0A0A0',
+        textSecondaryLight: '#6F6F6F',
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],

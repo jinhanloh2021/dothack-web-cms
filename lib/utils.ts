@@ -22,3 +22,10 @@ export function getCurrentAY(): string {
     return `AY${currentYear % 100}/${(currentYear + 1) % 100}`;
   }
 }
+
+export function reformatDate(date: string): string {
+  return `${date.substring(8, 10)}-${date.substring(5, 7)}-${date.substring(
+    0,
+    4
+  )}`;
+}
