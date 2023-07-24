@@ -39,6 +39,9 @@ module.exports = {
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
         nunito: ['Nunito', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        jetBrainsMono: ['JetBrains Mono', 'monospace'],
+        EBGaramond: ['EB Garamond', 'serif'],
       },
     },
   },

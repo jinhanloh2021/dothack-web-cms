@@ -144,7 +144,6 @@ export default async function Home() {
           excerpt={latestEvent.excerpt}
         />
         <br />
-        {JSON.stringify(latestEvent, null, 2)}
       </section>
       <svg
         xmlns='http://www.w3.org/2000/svg'

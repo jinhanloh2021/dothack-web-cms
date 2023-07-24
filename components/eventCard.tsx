@@ -33,13 +33,13 @@ export default function EventCard({
           blurDataURL={lqip}
         />
       </div>
-      <p className='w-[80%] max-w-[30rem] text-sm text-textSecondaryLight dark:text-textSecondaryDark mt-4 mx-auto'>
+      <p className='w-[80%] max-w-[30rem] text-sm font-jetBrainsMono text-textSecondaryLight dark:text-textSecondaryDark mt-4 mx-auto'>
         {date}
       </p>
-      <p className='w-[80%] max-w-[30rem] mx-auto text-base font-medium font-nunito'>
+      <p className='w-[80%] max-w-[30rem] mx-auto text-4xl font-semibold font-EBGaramond mb-4'>
         {name}
       </p>
-      <p className='w-[80%] max-w-[30rem] mx-auto text-base font-medium font-nunito'>
+      <p className='w-[80%] max-w-[30rem] mx-auto text-[15px] font-normal text-textSecondaryLight leading-5 font-inter line-clamp-3'>
         {excerpt}
       </p>
     </div>
