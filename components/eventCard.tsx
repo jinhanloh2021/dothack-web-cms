@@ -50,26 +50,6 @@ export default function EventCard({
       <p className='mx-auto text-[15px] font-normal text-textSecondaryLight dark:text-textSecondaryDark leading-5 font-inter line-clamp-3'>
         {excerpt}
       </p>
-      <Link
-        href={'/events'}
-        className='flex justify-end align-middle gap-1 p-0 mb-8 mt-6 hover:underline hover:cursor-pointer'
-      >
-        <span className='text-sm font-inter'>All Events</span>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          className='w-[9px] h-[9px] my-auto relative top-[.5px]'
-          fill='none'
-          viewBox='0 0 19 32'
-        >
-          <path
-            stroke='currentColor'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            strokeWidth='5.3'
-            d='m3 29 13-13L3 3'
-          />
-        </svg>
-      </Link>
     </div>
   );
 }

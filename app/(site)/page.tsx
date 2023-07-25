@@ -6,7 +6,9 @@ import { Separator } from '@/components/ui/separator';
 import { sortExco } from '@/lib/utils';
 import { getCurrentCoreExco, getLatestEvent } from '@/sanity/sanity.queries';
 import { ExcoQuery } from '@/types/Exco';
+import Link from 'next/link';
 
+// Root '/'
 export default async function Home() {
   const sortedExco: ExcoQuery[] = sortExco(await getCurrentCoreExco());
   const latestEvent = await getLatestEvent();
@@ -143,6 +145,26 @@ export default async function Home() {
           lqip={latestEvent.image.lqip}
           excerpt={latestEvent.excerpt}
         />
+        <Link
+          href={'/events'}
+          className='flex justify-end align-middle gap-1 p-0 mb-8 mt-6 hover:underline hover:cursor-pointer w-[80%] max-w-[30rem] mx-auto'
+        >
+          <span className='text-sm font-inter'>All Events</span>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            className='w-[9px] h-[9px] my-auto relative top-[.5px]'
+            fill='none'
+            viewBox='0 0 19 32'
+          >
+            <path
+              stroke='currentColor'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='5.3'
+              d='m3 29 13-13L3 3'
+            />
+          </svg>
+        </Link>
         <br />
       </section>
       <svg
