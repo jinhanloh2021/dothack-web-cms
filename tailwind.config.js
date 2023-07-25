@@ -42,6 +42,7 @@ module.exports = {
         inter: ['Inter', 'sans-serif'],
         jetBrainsMono: ['JetBrains Mono', 'monospace'],
         EBGaramond: ['EB Garamond', 'serif'],
+        firaCode: ['Fira Code', 'monospace'],
       },
     },
   },

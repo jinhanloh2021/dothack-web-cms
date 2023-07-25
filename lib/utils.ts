@@ -29,3 +29,16 @@ export function reformatDate(date: string): string {
     4
   )}`;
 }
+
+/**
+ *
+ * @param name Name of author
+ * @dev This function returns the initials of a name, up to 3 characters.
+ * Loh Jin Han -> LJH
+ * Sean Seah Yuan Jin -> SSY, omits the last character. Max 3 chars.
+ */
+export function getInitials(name: string): string {
+  const tokens = name.split(' ');
+  const initials = tokens.map((token) => token.charAt(0)).join('');
+  return initials.length > 3 ? initials.slice(0, 3) : initials;
+}

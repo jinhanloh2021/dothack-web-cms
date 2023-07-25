@@ -1,0 +1,7 @@
+.portable_text {
+  @apply font-inter text-base leading-5 px-[7%] sm:px-[15%] md:px-[20%] lg:px-[25%] xl:px-[30%];
+}
+
+.portable_text code {
+  @apply font-firaCode text-sm bg-[#282C34] text-[#ABB2BF] rounded-[0.3em] px-1 py-[2px];
+}
