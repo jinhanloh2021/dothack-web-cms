@@ -8,9 +8,9 @@ import {
   PortableTextTypeComponentProps,
 } from '@portabletext/react';
 import SanityImage from '@/components/sanityImage';
-import CodeBlock from '@/components/codeBlock';
 import { cn, getInitials, reformatDate } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
+import CodeBlock from '@/components/codeBlock/CodeBlock';
 
 type Props = {
   params: { event: string };
@@ -42,7 +42,7 @@ export default async function Event({ params }: Props) {
     <main className='mt-[20vh] min-h-[100vh]'>
       <div className='fixed top-0 w-full h-[20vh] -z-10'>
         <Image
-          src={event.image.src}
+          src={event.image?.src}
           alt={event.image.alt}
           fill
           style={{ objectFit: 'cover' }}

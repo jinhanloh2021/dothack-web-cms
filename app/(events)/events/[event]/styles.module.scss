@@ -3,5 +3,9 @@
 }
 
 .portable_text code {
-  @apply font-firaCode text-sm bg-[#282C34] text-[#ABB2BF] rounded-[0.3em] px-1 py-[2px];
+  @apply font-firaCode text-sm bg-[#DBDBDB] rounded-[0.3em] px-1 py-[2px];
+}
+
+:global(.dark) .portable_text code {
+  @apply bg-[#28342a] text-[#ABB2BF];
 }
