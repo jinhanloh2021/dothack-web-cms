@@ -53,14 +53,14 @@ pre[class*='language-'] {
 code[class*='language-']::-moz-selection,
 code[class*='language-'] *::-moz-selection,
 pre[class*='language-'] *::-moz-selection {
-  background: hsl(230, 1%, 90%);
+  background: rgba(176, 217, 190, 0.4);
   color: inherit;
 }
 
 code[class*='language-']::selection,
 code[class*='language-'] *::selection,
 pre[class*='language-'] *::selection {
-  background: hsl(230, 1%, 90%);
+  background: rgba(176, 217, 190, 0.4);
   color: inherit;
 }
 
@@ -491,7 +491,7 @@ pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
   code[class*='language-']::-moz-selection,
   code[class*='language-'] *::-moz-selection,
   pre[class*='language-'] *::-moz-selection {
-    background: hsl(220, 13%, 28%);
+    background: rgba(15, 21, 17, 0.3);
     color: inherit;
     text-shadow: none;
   }
@@ -499,7 +499,7 @@ pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
   code[class*='language-']::selection,
   code[class*='language-'] *::selection,
   pre[class*='language-'] *::selection {
-    background: hsl(220, 13%, 28%);
+    background: rgba(15, 21, 17, 0.3);
     color: inherit;
     text-shadow: none;
   }

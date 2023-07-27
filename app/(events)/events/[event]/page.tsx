@@ -27,7 +27,10 @@ const customPortableTextComponents = {
     },
     code: (props: PortableTextTypeComponentProps<any>) => {
       return (
-        <CodeBlock language={props.value.language}>
+        <CodeBlock
+          language={props.value.language}
+          filename={props.value.filename}
+        >
           {props.value.code}
         </CodeBlock>
       );

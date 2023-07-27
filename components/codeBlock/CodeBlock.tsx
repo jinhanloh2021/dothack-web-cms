@@ -1,9 +1,12 @@
 import Prism, { Token } from 'prismjs';
+import CopyToClipboardBtn from '../copyToClipboardBtn';
 import './prism-one-themes.scss';
+import { cn } from '@/lib/utils';
 
 type Props = {
   language: string;
   children: string;
+  filename?: string;
 };
 const languageMap: Record<string, string[]> = {
   javascript: ['javascript'],
@@ -28,7 +31,7 @@ const languageMap: Record<string, string[]> = {
   cpp: ['c', 'clike', 'cpp'], // manually resolve dependencies // EXTREMELY BAD
 };
 
-const CodeBlock = async ({ language, children }: Props) => {
+const CodeBlock = async ({ language, children, filename }: Props) => {
   const languages = languageMap[language];
   Promise.all(importLanguages(languages));
   const data: Array<string | Token> = Prism.languages[language]
@@ -36,7 +39,19 @@ const CodeBlock = async ({ language, children }: Props) => {
     : [];
 
   return (
-    <pre className={`language-${language} text-sm`}>
+    <pre className={`language-${language} text-sm relative`}>
+      <div
+        className={cn(
+          `flex justify-between items-center`,
+          'bg-gradient-to-r dark:from-[#5C6370] from-[#A0A1A7] dark:via-[#5C6370] via-[#A0A1A7] via-80% to-transparent to-[80%] bg-bottom bg-repeat-x bg-[length:10px_1px]',
+          'pb-1 mb-1'
+        )}
+      >
+        <p className='font-normal text-[#A0A1A7] dark:text-[#5C6370]'>
+          {filename ?? valueToTitle[language]}
+        </p>
+        <CopyToClipboardBtn text={children} />
+      </div>
       {data.length ? data.map(tokenToReactNode) : children}
     </pre>
   );
@@ -71,3 +86,26 @@ function tokenToReactNode(token: Token | string, i: number): React.ReactNode {
     );
   }
 }
+
+const valueToTitle: { [key: string]: string } = {
+  css: 'CSS',
+  csharp: 'C#',
+  cpp: 'C++',
+  golang: 'Go',
+  html: 'HTML',
+  java: 'Java',
+  javascript: 'Javascript',
+  json: 'JSON',
+  jsx: 'JSX',
+  php: 'PHP',
+  text: 'Plaintext',
+  python: 'Python',
+  rust: 'Rust',
+  ruby: 'Ruby',
+  sass: 'SASS',
+  scss: 'SCSS',
+  sh: 'Shell',
+  sql: 'SQL',
+  tsx: 'TSX',
+  typescript: 'Typescript',
+};

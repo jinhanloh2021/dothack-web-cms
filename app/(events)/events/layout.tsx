@@ -2,8 +2,11 @@ import { ThemeProvider } from '@/components/theme-provider';
 import '@/styles/globals.css';
 
 export const metadata = {
-  title: 'Event',
-  description: '',
+  title: '.Hack Events',
+  description: 'Events organised by SMU .Hack',
+  icons: {
+    icon: '/assets/images/favicon.png',
+  },
 };
 
 export default function EventLayout({
@@ -15,7 +18,7 @@ export default function EventLayout({
     <html lang='en' suppressHydrationWarning>
       <body
         className='dark:bg-offBlack bg-offWhite dark:text-offWhite text-offBlack font-montserrat tracking-wide overflow-x-hidden 
-      selection:bg-[#90ebae81] dark:selection:bg-[#38ba6a53'
+      selection:bg-[#90ebae81] dark:selection:bg-[#38ba6a53]'
       >
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           {children}
