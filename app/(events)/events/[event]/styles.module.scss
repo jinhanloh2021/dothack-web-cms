@@ -1,5 +1,5 @@
 .portable_text {
-  @apply font-inter text-base leading-5 px-[7%] sm:px-[15%] md:px-[20%] lg:px-[25%] xl:px-[30%];
+  @apply font-inter text-base leading-5 px-[7%] sm:px-[15%] md:px-[20%] lg:px-[25%] xl:px-[30%] pb-8;
 }
 
 .portable_text code {
@@ -7,5 +7,14 @@
 }
 
 :global(.dark) .portable_text code {
-  @apply bg-[#28342a] text-[#ABB2BF];
+  @apply bg-[#405243]/[.4] text-[#ABB2BF];
+}
+
+.portable_text {
+  & h1 {
+    @apply text-4xl;
+  }
+  & h2 {
+    @apply text-3xl;
+  }
 }

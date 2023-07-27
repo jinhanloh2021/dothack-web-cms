@@ -9,7 +9,22 @@ const config = defineConfig({
   dataset: 'production',
   apiVersion: '2023-06-28',
   basePath: '/admin',
-  plugins: [deskTool(), codeInput()],
+  plugins: [
+    deskTool(),
+    codeInput({
+      codeModes: [
+        {
+          name: 'rust',
+          loader: () =>
+            import('@codemirror/lang-rust').then(({ rust }) => rust()),
+        },
+        {
+          name: 'cpp',
+          loader: () => import('@codemirror/lang-cpp').then(({ cpp }) => cpp()),
+        },
+      ],
+    }),
+  ],
   schema: { types: schemaTypes },
 });
 

@@ -2,19 +2,35 @@ import Prism, { Token } from 'prismjs';
 import './prism-one-themes.scss';
 
 type Props = {
-  language:
-    | 'javascript'
-    | 'css'
-    | 'json'
-    | 'jsx'
-    | 'tsx'
-    | 'typescript'
-    | 'bash';
+  language: string;
   children: string;
+};
+const languageMap: Record<string, string[]> = {
+  javascript: ['javascript'],
+  typescript: ['javascript', 'typescript'],
+  jsx: ['jsx'],
+  tsx: ['jsx', 'tsx'],
+  css: ['css'],
+  python: ['python'],
+  html: ['markup'], //html is markup
+  java: ['java'],
+  json: ['json'],
+  php: ['php'],
+  sql: ['sql'],
+  csharp: ['csharp'],
+  scss: ['css', 'scss'],
+  sass: ['css', 'sass'],
+  ruby: ['ruby'],
+  text: ['text'],
+  sh: ['shell-session'],
+  golang: ['go'],
+  rust: ['rust'],
+  cpp: ['c', 'clike', 'cpp'], // manually resolve dependencies // EXTREMELY BAD
 };
 
 const CodeBlock = async ({ language, children }: Props) => {
-  await import(`prismjs/components/prism-${language}`); // conditional import
+  const languages = languageMap[language];
+  Promise.all(importLanguages(languages));
   const data: Array<string | Token> = Prism.languages[language]
     ? Prism.tokenize(children, Prism.languages[language])
     : [];
@@ -27,6 +43,10 @@ const CodeBlock = async ({ language, children }: Props) => {
 };
 
 export default CodeBlock;
+
+function importLanguages(languages: string[]): Promise<any>[] {
+  return languages.map((l) => import(`prismjs/components/prism-${l}`));
+}
 
 function tokenToReactNode(token: Token | string, i: number): React.ReactNode {
   if (typeof token === 'string') {

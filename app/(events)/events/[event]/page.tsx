@@ -43,7 +43,7 @@ export default async function Event({ params }: Props) {
       <div className='fixed top-0 w-full h-[20vh] -z-10'>
         <Image
           src={event.image?.src}
-          alt={event.image.alt}
+          alt={event.image?.alt}
           fill
           style={{ objectFit: 'cover' }}
           placeholder='blur'
