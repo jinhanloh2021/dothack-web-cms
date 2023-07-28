@@ -12,6 +12,9 @@ import { cn, getInitials, reformatDate, urlFor } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
 import CodeBlock from '@/components/codeBlock/CodeBlock';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useRouter } from 'next/router';
+import BackButton from '@/components/backButton';
+import Link from 'next/link';
 
 type Props = {
   params: { event: string };
@@ -55,6 +58,26 @@ export default async function Event({ params }: Props) {
         />
       </div>
       <div className='px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] bg-offWhite dark:bg-offBlack pt-4 pb-6'>
+        <Link
+          href={'/events'}
+          className='text-textSecondaryLight hover:text-offBlack dark:text-textSecondaryDark dark:hover:text-offWhite flex justify-start items-center gap-1 hover:underline hover:cursor-pointer mt-1 mb-3 w-[47px] relative'
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 33 33'
+            className='w-[9px] h-[9px]'
+          >
+            <path
+              stroke='currentColor'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='5.3'
+              d='M23 30 10 16 23 3'
+            />
+          </svg>
+          <span className='text-sm font-inter'>Back</span>
+        </Link>
         {event ? (
           <h1 className='font-EBGaramond text-4xl lg:text-5xl lg:leading-[1.1em] font-bold'>
             {event.name}
