@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar/index';
+import Footer from '@/components/footer';
 
 export const metadata = {
   title: '.Hack',
@@ -24,6 +25,7 @@ export default function RootLayout({
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <Navbar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

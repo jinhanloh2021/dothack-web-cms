@@ -1,6 +1,6 @@
 import Prism, { Token } from 'prismjs';
 import CopyToClipboardBtn from '../copyToClipboardBtn';
-import './prism-one-themes.scss';
+import '@/styles/prism-one-themes.scss';
 import { cn } from '@/lib/utils';
 
 type Props = {

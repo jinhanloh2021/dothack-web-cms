@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import MobileNavbar from './mobileNavbar';
 import DesktopNavbar from './desktopNavbar';

@@ -27,6 +27,9 @@ export function getCurrentAY(): string {
 }
 
 export function reformatDate(date: string): string {
+  if (!date || date.length === 0) {
+    return '';
+  }
   return `${date.substring(8, 10)}-${date.substring(5, 7)}-${date.substring(
     0,
     4

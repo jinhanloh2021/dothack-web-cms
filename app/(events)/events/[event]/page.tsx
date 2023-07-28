@@ -11,6 +11,7 @@ import SanityImage from '@/components/sanityImage';
 import { cn, getInitials, reformatDate, urlFor } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
 import CodeBlock from '@/components/codeBlock/CodeBlock';
+import { Skeleton } from '@/components/ui/skeleton';
 
 type Props = {
   params: { event: string };
@@ -45,33 +46,47 @@ export default async function Event({ params }: Props) {
     <main className='mt-[20vh] min-h-[100vh]'>
       <div className='fixed top-0 w-full h-[20vh] -z-10'>
         <Image
-          src={urlFor(event.image?.src).width(1900).url()}
-          alt={event.image?.alt}
+          src={event ? urlFor(event.image.src).width(1900).url() : '/'}
+          alt={event ? event.image.alt : ''}
           fill
           style={{ objectFit: 'cover' }}
-          placeholder='blur'
-          blurDataURL={event.image.lqip}
+          placeholder={event ? 'blur' : 'empty'}
+          blurDataURL={event ? event.image.lqip : ''}
         />
       </div>
       <div className='px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] bg-offWhite dark:bg-offBlack pt-4 pb-6'>
-        <h1 className='font-EBGaramond text-4xl lg:text-5xl lg:leading-[1.1em] font-bold'>
-          {event.name}
-        </h1>
-        <div className='my-4 flex justify-start items-start gap-2'>
-          <Avatar className='border-[1px]'>
-            <AvatarImage src={`${event.author.image.src}?h=50`} />
-            <AvatarFallback>{getInitials(event.author.name)}</AvatarFallback>
-          </Avatar>
-          <div className='flex flex-col justify-start items-start font-nunito]'>
-            <p className='font-medium mb-[-4px]'>{event.author.name}</p>
-            <p className='text-[13px] text-textSecondaryLight dark:text-textSecondaryDark'>
-              {event.author.position}
-            </p>
+        {event ? (
+          <h1 className='font-EBGaramond text-4xl lg:text-5xl lg:leading-[1.1em] font-bold'>
+            {event.name}
+          </h1>
+        ) : (
+          <Skeleton className='font-EBGaramond text-4xl lg:text-5xl lg:leading-[1.1em] font-bold h-[1em]' />
+        )}
+        {event ? (
+          <div className='my-4 flex justify-start items-start gap-2'>
+            <Avatar className='border-[1px]'>
+              <AvatarImage src={`${event.author.image.src}?h=50`} />
+              <AvatarFallback>{getInitials(event.author.name)}</AvatarFallback>
+            </Avatar>
+            <div className='flex flex-col justify-start items-start font-nunito]'>
+              <p className='font-medium mb-[-4px]'>{event.author.name}</p>
+              <p className='text-[13px] text-textSecondaryLight dark:text-textSecondaryDark'>
+                {event.author.position}
+              </p>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className='my-4 flex justify-start items-center gap-2'>
+            <Skeleton className='w-9 h-9 rounded-full' />
+            <div className='flex flex-col justify-center items-start gap-1'>
+              <Skeleton className='text-base h-[1em] w-24' />
+              <Skeleton className='text-[13px] h-[1em] w-32' />
+            </div>
+          </div>
+        )}
         <Separator />
         <p className='text-sm font-jetBrainsMono text-textSecondaryLight dark:text-textSecondaryDark'>
-          <span>{reformatDate(event.date) + ' '}</span>
+          <span>{reformatDate(event ? event.date : '') + ' '}</span>
           <span className='text-xl font-jetBrainsMono relative top-[2px] text-textSecondaryLight dark:text-textSecondaryDark'>
             {'•'}
           </span>
@@ -82,7 +97,7 @@ export default async function Event({ params }: Props) {
         className={cn(styles.portable_text, 'bg-offWhite', 'dark:bg-offBlack')}
       >
         <PortableText
-          value={event.content}
+          value={event?.content}
           components={customPortableTextComponents}
         />
       </div>

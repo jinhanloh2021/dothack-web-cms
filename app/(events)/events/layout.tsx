@@ -1,3 +1,4 @@
+import Footer from '@/components/footer';
 import { ThemeProvider } from '@/components/theme-provider';
 import '@/styles/globals.css';
 
@@ -22,6 +23,7 @@ export default function EventLayout({
       >
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
