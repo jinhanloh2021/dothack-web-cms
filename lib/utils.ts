@@ -1,4 +1,7 @@
+import clientConfig from '@/sanity/client.config';
 import { ExcoQuery, excoSortOrder } from '@/types/Exco';
+import imageUrlBuilder from '@sanity/image-url';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -41,4 +44,9 @@ export function getInitials(name: string): string {
   const tokens = name.split(' ');
   const initials = tokens.map((token) => token.charAt(0)).join('');
   return initials.length > 3 ? initials.slice(0, 3) : initials;
+}
+
+const urlBuilder = imageUrlBuilder(clientConfig);
+export function urlFor(src: SanityImageSource) {
+  return urlBuilder.image(src);
 }

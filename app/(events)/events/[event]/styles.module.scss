@@ -1,9 +1,9 @@
 .portable_text {
-  @apply font-inter text-base leading-5 px-[7%] sm:px-[15%] md:px-[20%] lg:px-[25%] xl:px-[30%] pb-8;
+  @apply font-inter text-base px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] pb-8;
 }
 
 .portable_text code {
-  @apply font-firaCode text-sm bg-[#DBDBDB] rounded-[0.3em] px-1 py-[2px];
+  @apply font-firaCode text-sm bg-[#DBDBDB] rounded-[0.3em] px-1 py-[1px];
 }
 
 :global(.dark) .portable_text code {
@@ -16,5 +16,67 @@
   }
   & h2 {
     @apply text-3xl;
+  }
+  & h3 {
+    @apply text-2xl;
+  }
+
+  & blockquote {
+    @apply border-l-4 border-[#405243] px-[.5em] bg-zinc-200 my-[.5em] italic;
+    &:before {
+      @apply content-['“'] font-EBGaramond font-bold text-2xl text-textSecondaryLight mr-1;
+    }
+    &:after {
+      @apply content-['”'] font-EBGaramond font-bold text-2xl text-textSecondaryLight ml-1;
+    }
+  }
+}
+
+:global(.dark) .portable_text {
+  & blockquote {
+    @apply bg-[#282828] border-[#324737];
+  }
+  &:before {
+    @apply text-textSecondaryDark;
+  }
+  &:after {
+    @apply text-textSecondaryDark;
+  }
+}
+
+.portable_text {
+  & strong {
+    @apply font-semibold;
+  }
+  & a {
+    @apply text-blue-500 hover:underline;
+  }
+}
+
+:global(.dark) .portable_text {
+  & a {
+    @apply text-blue-400;
+  }
+}
+
+.portable_text {
+  & ul {
+    @apply list-disc list-inside;
+    & ul {
+      @apply ml-[1em] list-[circle];
+    }
+    & ol {
+      @apply ml-[1em];
+    }
+  }
+
+  & ol {
+    @apply list-decimal list-inside;
+    & ol {
+      @apply ml-[1em] list-[lower-roman];
+    }
+    & ul {
+      @apply ml-[1em];
+    }
   }
 }

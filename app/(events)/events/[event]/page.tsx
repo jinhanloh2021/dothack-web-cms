@@ -8,7 +8,7 @@ import {
   PortableTextTypeComponentProps,
 } from '@portabletext/react';
 import SanityImage from '@/components/sanityImage';
-import { cn, getInitials, reformatDate } from '@/lib/utils';
+import { cn, getInitials, reformatDate, urlFor } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
 import CodeBlock from '@/components/codeBlock/CodeBlock';
 
@@ -45,7 +45,7 @@ export default async function Event({ params }: Props) {
     <main className='mt-[20vh] min-h-[100vh]'>
       <div className='fixed top-0 w-full h-[20vh] -z-10'>
         <Image
-          src={event.image?.src}
+          src={urlFor(event.image?.src).width(1900).url()}
           alt={event.image?.alt}
           fill
           style={{ objectFit: 'cover' }}
@@ -53,8 +53,10 @@ export default async function Event({ params }: Props) {
           blurDataURL={event.image.lqip}
         />
       </div>
-      <div className='px-[7%] sm:px-[15%] md:px-[20%] lg:px-[25%] xl:px-[30%] bg-offWhite dark:bg-offBlack pt-4 pb-6'>
-        <h1 className='font-EBGaramond text-4xl font-bold'>{event.name}</h1>
+      <div className='px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] bg-offWhite dark:bg-offBlack pt-4 pb-6'>
+        <h1 className='font-EBGaramond text-4xl lg:text-5xl lg:leading-[1.1em] font-bold'>
+          {event.name}
+        </h1>
         <div className='my-4 flex justify-start items-start gap-2'>
           <Avatar className='border-[1px]'>
             <AvatarImage src={`${event.author.image.src}?h=50`} />
@@ -77,19 +79,7 @@ export default async function Event({ params }: Props) {
         </p>
       </div>
       <div
-        className={cn(
-          styles.portable_text,
-          'bg-offWhite',
-          'dark:bg-offBlack',
-          'font-inter',
-          'text-base',
-          'leading-5',
-          'px-[7%]',
-          'sm:px-[15%]',
-          'md:px-[20%]',
-          'lg:px-[25%]',
-          'xl:px-[30%]'
-        )}
+        className={cn(styles.portable_text, 'bg-offWhite', 'dark:bg-offBlack')}
       >
         <PortableText
           value={event.content}
