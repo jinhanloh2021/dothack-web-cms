@@ -18,10 +18,8 @@ import {
 import { Separator } from '@/components/ui/separator';
 import CodeBlock from '@/components/codeBlock/CodeBlock';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useRouter } from 'next/router';
-import BackButton from '@/components/backButton';
 import Link from 'next/link';
-import { TelegramShareButton } from 'react-share';
+import ShareMenu from '@/components/shareMenu';
 
 type Props = {
   params: { event: string };
@@ -115,16 +113,19 @@ export default async function Event({ params }: Props) {
           </div>
         )}
         <Separator />
-        <p className='text-sm font-jetBrainsMono text-textSecondaryLight dark:text-textSecondaryDark'>
-          <span>{reformatDate(event ? event.date : '') + ' '}</span>
-          <span className='text-xl font-jetBrainsMono relative top-[2px] text-textSecondaryLight dark:text-textSecondaryDark'>
-            {'•'}
-          </span>
-          <span>{` ${getTimeToRead(event?.content)} min read`}</span>
-          {/* <TelegramShareButton title={event?.name ?? ''} url='/'>
-            Telegram
-          </TelegramShareButton> */}
-        </p>
+        <div className='flex justify-between items-center text-sm font-jetBrainsMono text-textSecondaryLight dark:text-textSecondaryDark'>
+          <p className='flex justify-start items-center gap-2'>
+            <span>{reformatDate(event ? event.date : '') + ' '}</span>
+            <span className='text-xl font-jetBrainsMono relative text-textSecondaryLight dark:text-textSecondaryDark'>
+              {'•'}
+            </span>
+            <span>{` ${getTimeToRead(event?.content)} min read`}</span>
+          </p>
+          <ShareMenu
+            title={`Checkout this .Hack post - ${event?.name}`}
+            url={`https://dothack.xyz/events/${event?.slug}`}
+          />
+        </div>
       </div>
       <div
         className={cn(styles.portable_text, 'bg-offWhite', 'dark:bg-offBlack')}

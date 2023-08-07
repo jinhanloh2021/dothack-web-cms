@@ -15,6 +15,11 @@ export const iconId = [
   'SeIllustration',
   'DeveloperIllustration',
   'cometHero',
+  'whatsappShare',
+  'facebookShare',
+  'telegramShare',
+  'XShare',
+  'linkShare',
 ];
 
 // Responsive size and position. Cannot make responsive colour for dark/light mode. Use inline SVG instead.
