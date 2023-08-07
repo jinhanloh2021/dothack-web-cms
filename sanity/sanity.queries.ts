@@ -99,6 +99,7 @@ export async function getLatestEvent() {
     }`
   );
 }
+
 export async function getEvent(slug: string) {
   return createClient(clientConfig).fetch(
     groq`*[_type == "event" && slug.current == $slug][0] {

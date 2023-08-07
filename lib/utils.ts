@@ -53,3 +53,23 @@ const urlBuilder = imageUrlBuilder(clientConfig);
 export function urlFor(src: SanityImageSource) {
   return urlBuilder.image(src);
 }
+
+/**
+ * This function estimates the time needed to read the Portable text in minutes
+ * @param content events?.content The portable text content from Sanity
+ * @returns Number of minutes to read the event
+ */
+export const getTimeToRead = (content: any) => {
+  const NUM_WORDS_READ_PER_MIN = 200; //according to some study
+  let text = '';
+  for (let i = 0; i < content?.length ?? 0; i++) {
+    if (content[i].code) {
+      text += content[i].code;
+      continue;
+    }
+    for (let j = 0; j < content[i].children?.length ?? 0; j++) {
+      text += content[i].children[j].text;
+    }
+  }
+  return Math.round(text.split(' ').length / NUM_WORDS_READ_PER_MIN);
+};

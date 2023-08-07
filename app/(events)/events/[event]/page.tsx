@@ -8,13 +8,20 @@ import {
   PortableTextTypeComponentProps,
 } from '@portabletext/react';
 import SanityImage from '@/components/sanityImage';
-import { cn, getInitials, reformatDate, urlFor } from '@/lib/utils';
+import {
+  cn,
+  getInitials,
+  getTimeToRead,
+  reformatDate,
+  urlFor,
+} from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
 import CodeBlock from '@/components/codeBlock/CodeBlock';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useRouter } from 'next/router';
 import BackButton from '@/components/backButton';
 import Link from 'next/link';
+import { TelegramShareButton } from 'react-share';
 
 type Props = {
   params: { event: string };
@@ -57,10 +64,10 @@ export default async function Event({ params }: Props) {
           blurDataURL={event ? event.image.lqip : ''}
         />
       </div>
-      <div className='px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] bg-offWhite dark:bg-offBlack pt-4 pb-6'>
+      <div className='px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] bg-offWhite dark:bg-offBlack pt-4'>
         <Link
           href={'/events'}
-          className='text-textSecondaryLight hover:text-offBlack dark:text-textSecondaryDark dark:hover:text-offWhite flex justify-start items-center gap-1 hover:underline hover:cursor-pointer mt-1 mb-3 w-[47px] relative'
+          className='ease-linear duration-150 text-textSecondaryLight hover:text-offBlack dark:text-textSecondaryDark dark:hover:text-offWhite flex justify-start items-center gap-1  hover:cursor-pointer mt-1 mb-3 w-[47px] relative'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -70,9 +77,9 @@ export default async function Event({ params }: Props) {
           >
             <path
               stroke='currentColor'
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='5.3'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='5.3'
               d='M23 30 10 16 23 3'
             />
           </svg>
@@ -113,7 +120,10 @@ export default async function Event({ params }: Props) {
           <span className='text-xl font-jetBrainsMono relative top-[2px] text-textSecondaryLight dark:text-textSecondaryDark'>
             {'•'}
           </span>
-          <span>{' 5 min read'}</span>
+          <span>{` ${getTimeToRead(event?.content)} min read`}</span>
+          {/* <TelegramShareButton title={event?.name ?? ''} url='/'>
+            Telegram
+          </TelegramShareButton> */}
         </p>
       </div>
       <div
@@ -139,6 +149,8 @@ export default async function Event({ params }: Props) {
 //   author: { name: 'Jin Han', position: 'Tech Executive', image: { src: null } },
 //   excerpt:
 //     'This is a short summary of the event. It is required for rendering the preview page of the event. It needs to be at least 100 characters long.',
+
+// const c = {
 //   content: [
 //     {
 //       markDefs: [],

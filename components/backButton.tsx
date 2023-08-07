@@ -1,7 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import { Button } from './ui/button';
 import Link from 'next/link';
 
 type Props = {};
@@ -21,9 +20,9 @@ export default function BackButton({}: Props) {
       >
         <path
           stroke='currentColor'
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          stroke-width='5.3'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='5.3'
           d='M23 30 10 16 23 3'
         />
       </svg>

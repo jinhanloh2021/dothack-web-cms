@@ -1,5 +1,5 @@
 .portable_text {
-  @apply font-inter text-base px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] pb-8;
+  @apply font-inter text-base px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] pb-8 break-words;
 }
 
 .portable_text code {
@@ -12,13 +12,16 @@
 
 .portable_text {
   & h1 {
-    @apply text-4xl;
+    @apply text-4xl font-medium;
   }
   & h2 {
-    @apply text-3xl;
+    @apply text-3xl font-semibold pt-[1em];
   }
   & h3 {
-    @apply text-2xl;
+    @apply text-2xl font-medium pt-[.8em];
+  }
+  & p {
+    @apply py-1;
   }
 
   & blockquote {
@@ -60,6 +63,9 @@
 }
 
 .portable_text {
+  & li {
+    @apply py-1;
+  }
   & ul {
     @apply list-disc list-inside;
     & ul {
