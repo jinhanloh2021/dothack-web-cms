@@ -8,32 +8,52 @@ type Props = {
   children: string;
   filename?: string;
 };
+
+/**
+ * Mapping from language to filenames
+ * Some languages extend others. See the files prism-typescript extends javascript.
+ * Have to manually resolve dependencies and import both.
+ */
 const languageMap: Record<string, string[]> = {
-  javascript: ['javascript'],
-  typescript: ['javascript', 'typescript'],
-  jsx: ['jsx'],
-  tsx: ['jsx', 'tsx'],
+  csharp: ['csharp'],
   css: ['css'],
-  python: ['python'],
+  cpp: ['c', 'clike', 'cpp'],
+  golang: ['go'],
   html: ['markup'], //html is markup
   java: ['java'],
+  javascript: ['javascript'],
   json: ['json'],
+  jsx: ['jsx'],
+  markdown: ['markdown'],
   php: ['php'],
-  sql: ['sql'],
-  csharp: ['csharp'],
-  scss: ['css', 'scss'],
-  sass: ['css', 'sass'],
+  python: ['python'],
   ruby: ['ruby'],
-  text: ['text'],
-  sh: ['shell-session'],
-  golang: ['go'],
   rust: ['rust'],
-  cpp: ['c', 'clike', 'cpp'], // manually resolve dependencies // EXTREMELY BAD
+  sass: ['css', 'sass'],
+  scss: ['css', 'scss'],
+  sh: ['shell-session'],
+  solidity: ['clike', 'solidity'],
+  sql: ['sql'],
+  text: ['text'],
+  tsx: ['jsx', 'tsx'],
+  typescript: ['javascript', 'typescript'],
+  xml: ['xml-doc'],
+  yaml: ['yaml'],
 };
 
+function importLanguages(filenames: string[]): Promise<any>[] {
+  return filenames.map(
+    (filename) => import(`prismjs/components/prism-${filename}`)
+  );
+}
+
+/**
+ * Only PrismJS syntax highlighting. Unrelated to sanity studio's code block highlighting
+ * That is in sanity.config.ts and event.schema.ts
+ */
 const CodeBlock = async ({ language, children, filename }: Props) => {
-  const languages = languageMap[language];
-  Promise.all(importLanguages(languages));
+  const filenames = languageMap[language];
+  Promise.all(importLanguages(filenames));
   const data: Array<string | Token> = Prism.languages[language]
     ? Prism.tokenize(children, Prism.languages[language])
     : [];
@@ -58,10 +78,6 @@ const CodeBlock = async ({ language, children, filename }: Props) => {
 };
 
 export default CodeBlock;
-
-function importLanguages(languages: string[]): Promise<any>[] {
-  return languages.map((l) => import(`prismjs/components/prism-${l}`));
-}
 
 function tokenToReactNode(token: Token | string, i: number): React.ReactNode {
   if (typeof token === 'string') {
@@ -88,8 +104,8 @@ function tokenToReactNode(token: Token | string, i: number): React.ReactNode {
 }
 
 const valueToTitle: { [key: string]: string } = {
-  css: 'CSS',
   csharp: 'C#',
+  css: 'CSS',
   cpp: 'C++',
   golang: 'Go',
   html: 'HTML',
@@ -97,15 +113,19 @@ const valueToTitle: { [key: string]: string } = {
   javascript: 'Javascript',
   json: 'JSON',
   jsx: 'JSX',
+  markdown: 'Markdown',
   php: 'PHP',
-  text: 'Plaintext',
   python: 'Python',
-  rust: 'Rust',
   ruby: 'Ruby',
+  rust: 'Rust',
   sass: 'SASS',
   scss: 'SCSS',
   sh: 'Shell',
+  solidity: 'Solidity',
   sql: 'SQL',
+  text: 'Plaintext',
   tsx: 'TSX',
   typescript: 'Typescript',
+  xml: 'XML',
+  yaml: 'YAML',
 };

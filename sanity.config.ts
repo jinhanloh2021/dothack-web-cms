@@ -22,6 +22,13 @@ const config = defineConfig({
           name: 'cpp',
           loader: () => import('@codemirror/lang-cpp').then(({ cpp }) => cpp()),
         },
+        {
+          name: 'solidity',
+          loader: () =>
+            import('@replit/codemirror-lang-solidity').then(
+              ({ solidity }) => solidity
+            ),
+        },
       ],
     }),
   ],

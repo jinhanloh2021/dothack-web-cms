@@ -62,7 +62,7 @@ export default async function Event({ params }: Props) {
           blurDataURL={event ? event.image.lqip : ''}
         />
       </div>
-      <div className='px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] pt-4'>
+      <div className='px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] pt-4 bg-offWhite dark:bg-offBlack'>
         <Link
           href={'/events'}
           className='ease-linear duration-150 text-textSecondaryLight hover:text-offBlack dark:text-textSecondaryDark dark:hover:text-offWhite flex justify-start items-center gap-1 hover:cursor-pointer mt-1 mb-3 w-[47px] relative'
