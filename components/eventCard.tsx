@@ -26,19 +26,20 @@ export default function EventCard({
 }: Props) {
   return (
     <div className='w-[80%] max-w-[30rem] mx-auto'>
-      <div className='h-[30rem] relative rounded-2xl overflow-hidden mx-auto'>
-        <Link href={`/event/${slug}`}>
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            style={{ objectFit: 'cover' }}
-            sizes='(max-width: 640) 40vw, (max-width: 768) 25vw, 30vw'
-            placeholder='blur'
-            blurDataURL={lqip}
-          />
-        </Link>
-      </div>
+      <Link
+        href={`/event/${slug}`}
+        className='relative h-[30rem] block rounded-2xl overflow-hidden'
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          style={{ objectFit: 'cover' }}
+          sizes='(max-width: 640) 40vw, (max-width: 768) 25vw, 30vw'
+          placeholder='blur'
+          blurDataURL={lqip}
+        />
+      </Link>
       <p className='text-sm font-jetBrainsMono text-textSecondaryLight dark:text-textSecondaryDark mt-4 mx-auto'>
         {reformatDate(date)}
       </p>

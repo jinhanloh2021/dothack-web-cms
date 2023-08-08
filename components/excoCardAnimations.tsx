@@ -12,8 +12,11 @@ type Props = {
  */
 export function ImageHoverScale({ children }: Props) {
   return (
-    <div className='h-[20rem] w-[16rem] relative rounded-lg overflow-hidden'>
-      <motion.div whileHover={{ scale: 1.1 }} className='h-[20rem] w-[16rem]'>
+    <div className='h-[20rem] w-[16rem] rounded-lg overflow-hidden'>
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        className='h-[20rem] w-[16rem] relative'
+      >
         {children}
       </motion.div>
     </div>
