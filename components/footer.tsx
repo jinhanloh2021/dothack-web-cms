@@ -19,21 +19,21 @@ export default function Footer({}: Props) {
           target='_blank'
           rel='noopener noreferrer'
         >
-          <InstagramLogoIcon className='w-6 h-6 text-textSecondaryLight hover:text-offBlack dark:hover:text-offWhite' />
+          <InstagramLogoIcon className='w-6 h-6 ease-linear duration-150 text-textSecondaryLight hover:text-offBlack dark:text-textSecondaryDark dark:hover:text-offWhite ' />
         </Link>
         <Link
           href='https://www.linkedin.com/company/smuhack/'
           target='_blank'
           rel='noopener noreferrer'
         >
-          <LinkedInLogoIcon className='w-6 h-6 text-textSecondaryLight hover:text-offBlack dark:hover:text-offWhite' />
+          <LinkedInLogoIcon className='w-6 h-6 ease-linear duration-150 text-textSecondaryLight hover:text-offBlack dark:text-textSecondaryDark dark:hover:text-offWhite' />
         </Link>
         <Link
           href='https://github.com/smu-hack-dsc'
           target='_blank'
           rel='noopener noreferrer'
         >
-          <GitHubLogoIcon className='w-6 h-6 text-textSecondaryLight hover:text-offBlack dark:hover:text-offWhite' />
+          <GitHubLogoIcon className='w-6 h-6 ease-linear duration-150 text-textSecondaryLight hover:text-offBlack dark:text-textSecondaryDark dark:hover:text-offWhite' />
         </Link>
       </div>
       <p className='text-right font-inter text-xs md:text-sm text-textSecondaryLight dark:text-textSecondaryDark w-[80%] mx-auto mt-10 mb-4'>

@@ -146,26 +146,28 @@ export default async function Home() {
             lqip={latestEvent.image.lqip}
             excerpt={latestEvent.excerpt}
           />
-          <Link
-            href={'/events'}
-            className='flex justify-end align-middle gap-1 p-0 mb-8 mt-6 hover:underline hover:cursor-pointer w-[80%] max-w-[30rem] mx-auto'
-          >
-            <span className='text-sm font-inter'>All Events</span>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='w-[9px] h-[9px] my-auto relative top-[.5px]'
-              fill='none'
-              viewBox='0 0 19 32'
+          <div className='flex justify-end mb-8 mt-6 w-[80%] max-w-[30rem] mx-auto'>
+            <Link
+              href={'/events'}
+              className='flex justify-end gap-1 p-0 items-center hover:cursor-pointer ease-linear duration-150 text-textSecondaryLight hover:text-offBlack dark:text-textSecondaryDark dark:hover:text-offWhite'
             >
-              <path
-                stroke='currentColor'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='5.3'
-                d='m3 29 13-13L3 3'
-              />
-            </svg>
-          </Link>
+              <span className='text-sm font-inter'>All Events</span>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                className='w-[9px] h-[9px] my-auto relative top-[.5px]'
+                fill='none'
+                viewBox='0 0 19 32'
+              >
+                <path
+                  stroke='currentColor'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='5.3'
+                  d='m3 29 13-13L3 3'
+                />
+              </svg>
+            </Link>
+          </div>
         </section>
         <svg
           xmlns='http://www.w3.org/2000/svg'

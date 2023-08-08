@@ -5,6 +5,8 @@ import {
   CalendarIcon,
   HamburgerMenuIcon,
   HomeIcon,
+  MoonIcon,
+  SunIcon,
 } from '@radix-ui/react-icons';
 import {
   Sheet,
@@ -16,6 +18,8 @@ import {
 } from '../ui/sheet';
 import { Separator } from '../ui/separator';
 import Link from 'next/link';
+import { Switch } from '@/components/ui/switch';
+import { useTheme } from 'next-themes';
 
 const dropIn: Variants = {
   hidden: {
@@ -41,6 +45,8 @@ const dropIn: Variants = {
 const MobileNavbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const { theme, setTheme } = useTheme();
+  console.log(`Current theme is: ${theme}`);
 
   const handleScroll = useCallback(() => {
     const currentScrollPos = window.scrollY;
@@ -100,6 +106,23 @@ const MobileNavbar = () => {
                       Events
                     </Link>
                   </SheetClose>
+                  <Separator />
+                  <div
+                    className='flex flex-row justify-start items-center gap-4 py-4'
+                    onClick={() =>
+                      setTheme(theme === 'light' ? 'dark' : 'light')
+                    }
+                  >
+                    {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
+                    {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+                    <Switch
+                      checked={theme === 'dark'}
+                      onCheckedChange={() =>
+                        setTheme(theme === 'light' ? 'dark' : 'light')
+                      }
+                      className='ml-auto'
+                    />
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
