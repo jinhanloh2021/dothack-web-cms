@@ -32,7 +32,7 @@ export default function ShareMenu({ title, url }: Props) {
             size='icon'
             className='focus-visible:ring-0 hover:bg-transparent dark:hover:bg-transparent text-textSecondaryLight dark:text-textSecondaryDark'
           >
-            <Share2Icon />
+            <Share2Icon height={16} width={16} />
             <span className='sr-only'>Toggle theme</span>
           </Button>
         </DropdownMenuTrigger>

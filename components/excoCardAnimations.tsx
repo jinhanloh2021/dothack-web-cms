@@ -23,11 +23,11 @@ export function ImageHoverScale({ children }: Props) {
   );
 }
 const cardVariants: Variants = {
-  offscreen: {
+  offScreen: {
     y: 100,
     opacity: 0,
   },
-  onscreen: {
+  onScreen: {
     y: 0,
     opacity: 1,
     transition: {
@@ -41,8 +41,8 @@ const cardVariants: Variants = {
 export function FlyInOnScroll({ children }: Props) {
   return (
     <motion.div
-      initial='offscreen'
-      whileInView='onscreen'
+      initial='offScreen'
+      whileInView='onScreen'
       viewport={{ once: true, amount: 0.15 }}
       variants={cardVariants}
     >

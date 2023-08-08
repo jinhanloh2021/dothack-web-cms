@@ -1,4 +1,5 @@
 import EventCard from '@/components/eventCard';
+import EventsPagination from '@/components/eventsPagination';
 import { getAllEvents } from '@/sanity/sanity.queries';
 import React from 'react';
 
@@ -6,20 +7,21 @@ type Props = {
   params: { pagination: string };
 };
 
+// localhost:3000/events/1
 export default async function Events({ params: { pagination } }: Props) {
   // Fixed variables. Doesn't matter what page.
-  const NUM_EVENTS_PER_PAGE = 2;
   const allEvents = await getAllEvents(); //cached to prevent overFetching
-  const numEvents = allEvents.length;
-  const numPages = Math.ceil(numEvents / NUM_EVENTS_PER_PAGE);
-  console.log(
-    `Num events: ${numEvents}\nNum pages: ${numPages}\nCurrent page: ${pagination}`
-  );
+  const NUM_EVENTS_PER_PAGE = 6; // ? subject to change
+  const totalPages = Math.ceil(allEvents.length / NUM_EVENTS_PER_PAGE);
+
+  if (Number(pagination) < 1 || Number(pagination) > totalPages) {
+    return <h1>Page not found</h1>;
+  }
 
   // Varies based on current page
   const pageEvents = allEvents.slice(
-    (+pagination - 1) * 2,
-    (+pagination - 1) * 2 + NUM_EVENTS_PER_PAGE
+    (+pagination - 1) * NUM_EVENTS_PER_PAGE,
+    (+pagination - 1) * NUM_EVENTS_PER_PAGE + NUM_EVENTS_PER_PAGE
   );
 
   return (
@@ -42,6 +44,7 @@ export default async function Events({ params: { pagination } }: Props) {
           />
         ))}
       </div>
+      <EventsPagination page={Number(pagination)} totalPages={totalPages} />
     </main>
   );
 }

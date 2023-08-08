@@ -15,7 +15,7 @@ const DesktopNavbar = () => {
         Home
       </Link>
       <Link
-        href={'/events'}
+        href={'/events/1'}
         className={
           buttonVariants({ variant: 'outline' }) +
           ' dark:bg-gray-800 dark:bg-clip-padding dark:backdrop-filter dark:backdrop-blur-sm dark:bg-opacity-10 bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 '

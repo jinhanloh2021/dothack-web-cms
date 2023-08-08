@@ -148,7 +148,7 @@ export default async function Home() {
           />
           <div className='flex justify-end mb-8 mt-6 w-[80%] max-w-[30rem] mx-auto'>
             <Link
-              href={'/events'}
+              href={'/events/1'}
               className='flex justify-end gap-1 p-0 items-center hover:cursor-pointer ease-linear duration-150 text-textSecondaryLight hover:text-offBlack dark:text-textSecondaryDark dark:hover:text-offWhite'
             >
               <span className='text-sm font-inter'>All Events</span>

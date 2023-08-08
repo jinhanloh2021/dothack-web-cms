@@ -98,7 +98,7 @@ const MobileNavbar = () => {
                   <Separator />
                   <SheetClose asChild>
                     <Link
-                      href={'/events'}
+                      href={'/events/1'}
                       className='flex flex-row justify-start items-center gap-4 py-4'
                     >
                       <CalendarIcon />

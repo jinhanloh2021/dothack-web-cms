@@ -1,5 +1,5 @@
 .portable_text {
-  @apply font-inter text-base px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] pb-8 break-words;
+  @apply min-h-[20vh] font-inter text-base px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] pb-8 break-words;
 }
 
 .portable_text code {
@@ -12,7 +12,7 @@
 
 .portable_text {
   & h1 {
-    @apply text-4xl font-medium;
+    @apply text-4xl font-semibold pt-[1em];
   }
   & h2 {
     @apply text-3xl font-semibold pt-[1em];

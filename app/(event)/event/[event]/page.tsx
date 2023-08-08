@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 import {
   PortableText,
+  PortableTextMarkComponentProps,
   PortableTextTypeComponentProps,
 } from '@portabletext/react';
 import SanityImage from '@/components/sanityImage';
@@ -18,8 +19,8 @@ import {
 import { Separator } from '@/components/ui/separator';
 import CodeBlock from '@/components/codeBlock/CodeBlock';
 import { Skeleton } from '@/components/ui/skeleton';
-import Link from 'next/link';
 import ShareMenu from '@/components/shareMenu';
+import EventBack from '@/components/eventBack';
 
 type Props = {
   params: { event: string };
@@ -45,13 +46,23 @@ const customPortableTextComponents = {
       );
     },
   },
+  marks: {
+    link: (props: PortableTextMarkComponentProps<any>) => {
+      return (
+        <a href={props.value.href} target='_blank' rel='noopener noreferrer'>
+          {props.text}
+        </a>
+      );
+    },
+  },
 };
 
+// localhost:3000/event/event-slugified-title
 export default async function Event({ params }: Props) {
   const event = await getEvent(params.event);
   // console.log(event);
   return (
-    <main className='mt-[20vh] min-h-[100vh]'>
+    <main className='mt-[20vh] min-h-[80vh]'>
       <div className='fixed top-0 w-full h-[20vh] -z-10'>
         <Image
           src={event ? urlFor(event.image.src).width(1900).url() : '/'}
@@ -63,26 +74,7 @@ export default async function Event({ params }: Props) {
         />
       </div>
       <div className='px-6 sm:px-24 md:px-36 lg:px-56 xl:px-[25%] 2xl:px-[30%] pt-4 bg-offWhite dark:bg-offBlack'>
-        <Link
-          href={'/events'}
-          className='ease-linear duration-150 text-textSecondaryLight hover:text-offBlack dark:text-textSecondaryDark dark:hover:text-offWhite flex justify-start items-center gap-1 hover:cursor-pointer mt-1 mb-3 w-[47px] relative'
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 33 33'
-            className='w-[9px] h-[9px]'
-          >
-            <path
-              stroke='currentColor'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='5.3'
-              d='M23 30 10 16 23 3'
-            />
-          </svg>
-          <span className='text-sm font-inter'>Back</span>
-        </Link>
+        <EventBack />
         {event ? (
           <h1 className='font-EBGaramond text-4xl lg:text-5xl lg:leading-[1.1em] font-bold'>
             {event.name}
@@ -92,7 +84,7 @@ export default async function Event({ params }: Props) {
         )}
         {event ? (
           <div className='my-4 flex justify-start items-start gap-2'>
-            <Avatar className='border-[1px]'>
+            <Avatar>
               <AvatarImage src={`${event.author.image.src}?h=50`} />
               <AvatarFallback>{getInitials(event.author.name)}</AvatarFallback>
             </Avatar>
@@ -122,8 +114,8 @@ export default async function Event({ params }: Props) {
             <span>{` ${getTimeToRead(event?.content)} min read`}</span>
           </p>
           <ShareMenu
-            title={`Checkout this .Hack post - ${event?.name}`}
-            url={`https://dothack.xyz/events/${event?.slug}`}
+            title={`Checkout this .Hack post - ${event?.name}`} // ? Could be improved
+            url={`https://dothack.xyz/event/${event?.slug}`}
           />
         </div>
       </div>
