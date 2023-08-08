@@ -71,7 +71,8 @@ export async function getAllEvents() {
       },
       excerpt,
       // content
-    }`
+    }`,
+    { cache: 'force-cache' }
   );
 }
 
@@ -125,6 +126,39 @@ export async function getEvent(slug: string) {
     { slug }
   );
 }
+
+/**
+ * Originally used to get paginated events. But we are using SSR so not possible with groq and sanity. In the end it is still fetching everything and then slicing the allEvents array based on page number.
+ * Order date desc means, largest to smallest === latest date to earliest date. 2025-01-01 > 2024-01-01.
+ * Hardcoded to 2 events per page
+ * Not used in the end because requires component to be client side to maintain lastDate and lastId state
+ */
+// export async function getPaginatedEvents(lastDate: string, lastId: string) {
+//   return createClient(clientConfig).fetch(
+//     groq`*[_type == 'event' && (date < "${lastDate}" || (date == "${lastDate}" && _id > "${lastId}"))] | order(date desc) [0...2] {
+//       _id,
+//       name,
+//       date,
+//       "slug": slug.current,
+//       "image": {
+//         "src": image.asset->url,
+//         "alt": image.alt,
+//         "lqip": image.asset->metadata.lqip,
+//         "hotspot": image.hotspot,
+//       },
+//       "author": {
+//         "name": author->name,
+//         "position": author->position,
+//         "image": {
+//           "src": author->profile_pic.asset->url,
+//         }
+//       },
+//       excerpt,
+//       // content
+//     }`,
+//     { cache: 'force-cache' }
+//   );
+// }
 
 // const finalEventShape: ManualEventQuery = {
 //   date: '2023-06-29',

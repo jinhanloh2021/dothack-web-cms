@@ -26,6 +26,9 @@ export function getCurrentAY(): string {
   }
 }
 
+/**
+ * Converts 2023-09-29 to 29-09-2023
+ */
 export function reformatDate(date: string): string {
   if (!date || date.length === 0) {
     return '';
@@ -71,5 +74,7 @@ export const getTimeToRead = (content: any) => {
       text += content[i].children[j].text;
     }
   }
-  return Math.round(text.split(' ').length / NUM_WORDS_READ_PER_MIN);
+  let timeToRead = Math.round(text.split(' ').length / NUM_WORDS_READ_PER_MIN);
+  timeToRead = timeToRead === 0 ? 1 : timeToRead; // At least 1 minute to read. Cannot 0 minutes.
+  return timeToRead;
 };

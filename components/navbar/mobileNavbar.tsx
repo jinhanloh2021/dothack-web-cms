@@ -46,7 +46,6 @@ const MobileNavbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
   const { theme, setTheme } = useTheme();
-  console.log(`Current theme is: ${theme}`);
 
   const handleScroll = useCallback(() => {
     const currentScrollPos = window.scrollY;

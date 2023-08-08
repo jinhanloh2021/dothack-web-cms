@@ -27,7 +27,7 @@ export default function EventCard({
   return (
     <div className='w-[80%] max-w-[30rem] mx-auto'>
       <div className='h-[30rem] relative rounded-2xl overflow-hidden mx-auto'>
-        <Link href={`/events/${slug}`}>
+        <Link href={`/event/${slug}`}>
           <Image
             src={src}
             alt={alt}
@@ -42,8 +42,8 @@ export default function EventCard({
       <p className='text-sm font-jetBrainsMono text-textSecondaryLight dark:text-textSecondaryDark mt-4 mx-auto'>
         {reformatDate(date)}
       </p>
-      <Link href={`/events/${slug}`}>
-        <p className='mx-auto text-4xl font-semibold font-EBGaramond mb-4 hover:underline hover:cursor-pointer'>
+      <Link href={`/event/${slug}`}>
+        <p className='inline-block mx-auto text-4xl font-semibold font-EBGaramond mb-4 hover:underline hover:cursor-pointer'>
           {name}
         </p>
       </Link>
