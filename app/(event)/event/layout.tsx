@@ -1,4 +1,5 @@
 import Footer from '@/components/footer';
+import ScrollToTop from '@/components/scrollToTop';
 import { ThemeProvider } from '@/components/theme-provider';
 import '@/styles/globals.css';
 
@@ -25,6 +26,7 @@ export default function EventLayout({
           {children}
           <Footer />
         </ThemeProvider>
+        <ScrollToTop />
       </body>
     </html>
   );
