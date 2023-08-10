@@ -79,7 +79,12 @@
         <li><a href="#events-pagination">Events Pagination</a></li>
       </ul>
     </li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li>
+      <a href="#contributing">Contributing</a>
+      <ul>
+        <li><a href="#branching-and-commit-rules">Branch Rules</a></li>
+      </ul>
+    </li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -197,7 +202,7 @@ Number of events displayed per page is hardcoded to **6**. This can be changed i
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "feature".
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star.
 
 1. Fork the Project
@@ -209,6 +214,9 @@ git checkout -b feat/issue-id/MyProposedFeature
 3. Commit your Changes (`git commit -m 'feat #issue-id : ' -m 'I have added this feature successfully'`)
 4. Push to the Branch (`git push origin feat/issue-id/MyProposedFeature`)
 5. Open a Pull Request to `dev` branch
+
+### Branching and commit rules
+See the rules for this repo [here](https://github.com/jinhanloh2021/dothack-web-cms/issues/1)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -251,7 +259,7 @@ Email: [jinhan.loh.2021@scis.smu.edu.sg](mailto:jinhan.loh.2021@scis.smu.edu.sg)
 [issues-shield]: https://img.shields.io/github/issues/jinhanloh2021/dothack-web-cms.svg?style=for-the-badge
 [issues-url]: https://github.com/jinhanloh2021/dothack-web-cms/issues
 [license-shield]: https://img.shields.io/github/license/jinhanloh2021/dothack-web-cms.svg?style=for-the-badge
-[license-url]: https://github.com/jinhanloh2021/dothack-web-cms/blob/master/LICENSE.txt
+[license-url]: https://github.com/jinhanloh2021/dothack-web-cms/blob/dev/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/jinhanloh/
 [product-screenshot]: public/assets/images/DothackWebSS.PNG
