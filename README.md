@@ -67,10 +67,18 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#run-locally">Run Locally</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li>
+      <a href="#configuration">Configuration</a>
+      <ul>
+        <li><a href="#current-exco-display">Exco Display</a></li>
+        <li><a href="#events-pagination">Events Pagination</a></li>
+      </ul>
+    </li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -103,10 +111,6 @@
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
@@ -117,18 +121,19 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/jinhanloh2021/dothack-web-cms.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+
+### Run Locally
+1. Run dev server
+   ```sh
+   npm run dev
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -137,24 +142,51 @@ This is an example of how to list things you need to use the software and how to
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+To access the Sanity Studio CMS, go to the admin route `https://localhost:3000/admin` to edit posts.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Configuration
+### Current exco display
+The `getCurrentCoreExco()` query gets the current core exco members to be displayed on the home screen.
+```ts
+export async function getCurrentCoreExco(): Promise<ExcoQuery[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == 'exco' && (position == 'President' || position == 'Vice President (internal)' || position == 'Vice President (external)' || position == 'Honorary General Secretary' || position == 'Honorary Finance Secretary') && term == "${getCurrentAY()}"] | order(term desc, position){
+      name,
+      position,
+      term,
+      'imageSrc': profile_pic.asset->url, // -> to dereference
+      'lqip': profile_pic.asset->metadata.lqip,
+      'hotspot': profile_pic.hotspot,
+    }`
+  );
+}
+```
+The positions are hardcoded, and their term has to match the `getCurrentAY()` term. Eg. The current term is AY22/23, so only exco members with attribute term equal to AY22/23 will be queried.
+```ts
+export function getCurrentAY(): string {
+  const currentYear = new Date().getFullYear(); // Assume elections in September
+  if (new Date().getMonth() < 8) {
+    return `AY${(currentYear - 1) % 100}/${currentYear % 100}`;
+  } else {
+    return `AY${currentYear % 100}/${(currentYear + 1) % 100}`;
+  }
+}
+```
+This has the assumption that the elections are in September, so the new term starts in September. Eg. 09/23 -> AY22/23, 10/23 -> AY23/24.
+To adjust which exco is displayed, you can either change this value in the function, or adjust the term attribute in the CMS for each exco.
 
+### Events Pagination
+Number of events displayed per page is hardcoded to **6**. This can be changed in the [file](/app/(site)/events/[pagination]/page.tsx).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/jinhanloh2021/dothack-web-cms/issues) for a full list of proposed features (and known issues).
+- [x] Dark mode
+- [ ] See [open issues](https://github.com/jinhanloh2021/dothack-web-cms/issues) for a full list of proposed features (and known issues)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -165,23 +197,25 @@ See the [open issues](https://github.com/jinhanloh2021/dothack-web-cms/issues) f
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "feature".
+Don't forget to give the project a star.
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create your Feature Branch from the `dev` branch
+```sh
+git checkout dev
+git checkout -b feat/issue-id/MyProposedFeature
+```
+3. Commit your Changes (`git commit -m 'feat #issue-id : ' -m 'I have added this feature successfully'`)
+4. Push to the Branch (`git push origin feat/issue-id/MyProposedFeature`)
+5. Open a Pull Request to `dev` branch
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the [MIT License](https://github.com/jinhanloh2021/dothack-web-cms/blob/main/LICENSE.md).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -190,6 +224,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 Project Link: [https://github.com/jinhanloh2021/dothack-web-cms](https://github.com/jinhanloh2021/dothack-web-cms)
+
+Email: [jinhan.loh.2021@scis.smu.edu.sg](mailto:jinhan.loh.2021@scis.smu.edu.sg)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
