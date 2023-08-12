@@ -1,6 +1,7 @@
 import EventCard from '@/components/eventCard';
 import EventsPagination from '@/components/eventsPagination';
 import { getAllEvents } from '@/sanity/sanity.queries';
+import { notFound } from 'next/navigation';
 import React from 'react';
 
 type Props = {
@@ -14,8 +15,11 @@ export default async function Events({ params: { pagination } }: Props) {
   const NUM_EVENTS_PER_PAGE = 6; // ? subject to change
   const totalPages = Math.ceil(allEvents.length / NUM_EVENTS_PER_PAGE);
 
-  if (Number(pagination) < 1 || Number(pagination) > totalPages) {
-    return <h1>Page not found</h1>;
+  // Checking non-existent page or non-number page
+  if (Number.isNaN(Number(pagination))) {
+    notFound();
+  } else if (Number(pagination) < 1 || Number(pagination) > totalPages) {
+    notFound();
   }
 
   // Varies based on current page

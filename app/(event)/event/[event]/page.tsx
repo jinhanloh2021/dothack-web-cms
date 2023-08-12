@@ -21,6 +21,7 @@ import CodeBlock from '@/components/codeBlock/CodeBlock';
 import { Skeleton } from '@/components/ui/skeleton';
 import ShareMenu from '@/components/shareMenu';
 import EventBack from '@/components/eventBack';
+import { notFound } from 'next/navigation';
 
 type Props = {
   params: { event: string };
@@ -60,6 +61,9 @@ const customPortableTextComponents = {
 // localhost:3000/event/event-slugified-title
 export default async function Event({ params }: Props) {
   const event = await getEvent(params.event);
+  if (!event) {
+    notFound();
+  }
   // console.log(event);
   return (
     <main className='mt-[20vh] min-h-[80vh]'>
