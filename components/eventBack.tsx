@@ -31,7 +31,7 @@ export default function EventBack() {
           d='M23 30 10 16 23 3'
         />
       </svg>
-      <span className='text-sm font-inter'>Back</span>
+      <span className='text-sm font-inter select-none'>Back</span>
     </p>
   );
 }
